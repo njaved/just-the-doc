@@ -1,27 +1,37 @@
-/* Change accent color from purple to black */
+/* Override primary color */
 :root {
-  --theme-primary-color: #000000; /* Black */
-  --theme-secondary-color: #333333; /* Dark Gray */
-  --theme-hover-color: #111111; /* Darker Black for hover */
+  --color-primary: #000000; /* Black */
+  --color-primary-light: #111111; /* Slightly lighter black */
+  --color-primary-dark: #000000; /* Dark black */
+  --color-primary-darker: #000000; /* Darker black */
 }
 
 /* Override link colors */
 a {
-  color: var(--theme-primary-color);
+  color: var(--color-primary);
 }
 
 a:hover {
-  color: var(--theme-hover-color);
+  color: var(--color-primary-light);
 }
 
-/* Override header colors */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--theme-primary-color);
-}
-
-/* Override sidebar active link color */
+/* Override sidebar active link */
 .nav-list .active > a {
-  color: var(--theme-primary-color);
+  color: var(--color-primary);
   font-weight: bold;
-  border-left: 4px solid var(--theme-primary-color);
+  border-left: 4px solid var(--color-primary);
+}
+
+/* Override heading colors */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+}
+
+/* Override table of contents */
+ul.toc-list li a {
+  color: var(--color-primary);
+}
+
+ul.toc-list li a:hover {
+  color: var(--color-primary-light);
 }
