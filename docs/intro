@@ -1,5 +1,6 @@
 ---
 title: Introduction
 nav_order: 1
-layout: default
+layout: about
+nav_enabled: true
 ---
