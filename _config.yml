@@ -1,6 +1,6 @@
 title: NBS
 description: National Electronic Disease Surveillance System Base System (NBS)
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs@v0.10.0
 url: https://njaved.github.io/just-the-doc
 aux_links: # remove if you don't want this link to appear on your pages
   Template Repository: https://njaved.github.io/just-the-doc
