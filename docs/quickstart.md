@@ -5,6 +5,12 @@ nav_order: 1
 nav_enabled: true
 ---
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 This quick guide provides a simple step-by-step approach for deploying the NBS 7.9 infrastructure and microservices in an AWS environment. It is intended for experienced administrators who are familiar with AWS, Kubernetes, Helm, and Terraform. 
 
 This guide is NOT meant for a production deployment. Please review System Administrator Guide for a full production deployment and guidelines.
