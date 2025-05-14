@@ -1,7 +1,7 @@
 ---
 title: Introduction
 layout: home
-nav_order: 1
+nav_order: 2
 ---
 
 # Introduction
