@@ -1,0 +1,27 @@
+/* Change accent color from purple to black */
+:root {
+  --theme-primary-color: #000000; /* Black */
+  --theme-secondary-color: #333333; /* Dark Gray */
+  --theme-hover-color: #111111; /* Darker Black for hover */
+}
+
+/* Override link colors */
+a {
+  color: var(--theme-primary-color);
+}
+
+a:hover {
+  color: var(--theme-hover-color);
+}
+
+/* Override header colors */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--theme-primary-color);
+}
+
+/* Override sidebar active link color */
+.nav-list .active > a {
+  color: var(--theme-primary-color);
+  font-weight: bold;
+  border-left: 4px solid var(--theme-primary-color);
+}
