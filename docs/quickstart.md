@@ -6,7 +6,7 @@ nav_enabled: true
 ---
 
 # Quickstart
-{: .no_toc .text-delta }
+{: .no_toc }
 
 ## Table of contents
 {: .no_toc .text-delta }
