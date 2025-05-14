@@ -12,8 +12,11 @@ back_to_top: true
 back_to_top_text: "Back to top"
 just_the_docs:
   toc:
-    min_level: 1
+    min_level: 2
     max_level: 2
+toc:
+  min_level: 2
+  max_level: 2
 # Footer "Edit this page on GitHub" link text
 #gh_edit_link: true # show or hide edit this page link
 #gh_edit_link_text: "Edit this page on GitHub."
