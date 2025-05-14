@@ -1,8 +1,25 @@
-title: National Electronic Disease Surveillance System Base System (NBS)
+title: NBS 7.9 System Administrator Guide
 description: National Electronic Disease Surveillance System Base System (NBS)
 theme: just-the-docs
-
 url: https://njaved.github.io/just-the-doc
-color_scheme: custom_scheme
-aux_links: # remove if you don't want this link to appear on your pages
-  Template Repository: https://github.com/njaved/just-the-doc
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+
+# Enable the custom stylesheet
+just_the_docs:
+  palette:
+    primary:
+      color: "#000000"
+      text-color: "#ffffff"
+  auxiliary_links:
+    - title: "GitHub"
+      url: https://github.com/your-username/nbs-admin-guide
+  custom_css:
+    - assets/css/custom.css
+
+
+#aux_links: # remove if you don't want this link to appear on your pages
+  #Template Repository: https://github.com/njaved/just-the-doc
