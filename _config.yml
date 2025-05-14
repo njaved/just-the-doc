@@ -9,12 +9,5 @@ just_the_docs:
     primary:
       color: "#000000"
       text-color: "#ffffff"
-  auxiliary_links:
-    - title: "GitHub"
-      url: https://github.com/your-username/nbs-admin-guide
   custom_css:
     - assets/css/custom.css
-
-
-#aux_links: # remove if you don't want this link to appear on your pages
-  #Template Repository: https://github.com/njaved/just-the-doc
