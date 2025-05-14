@@ -3,11 +3,6 @@ description: National Electronic Disease Surveillance System Base System (NBS)
 theme: just-the-docs
 url: https://njaved.github.io/just-the-doc
 
-plugins:
-  - jekyll-seo-tag
-  - jekyll-sitemap
-
-
 # Enable the custom stylesheet
 just_the_docs:
   palette:
