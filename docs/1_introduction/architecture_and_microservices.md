@@ -12,7 +12,7 @@ The Modern NBS will be hosted on a separate Virtual Private Cloud (VPC) to preve
 
 The architecture diagram below illustrates the key components of the Modernized NBS.
 
-![Infrastructure](/docs/1_introduction_Screenshot/nbs7_architecture_and_microservices.png)
+![Infrastructure](/docs/1_introduction/nbs7_architecture_and_microservices.png)
 
 ### Infrastructure as Code (IaC)
 The cloud environment for hosting NBS 7 is set up and configured using an infrastructure as code approach. Terraform code is used to provision and manage the cloud hosting environment, and Helm is used to manage workloads in the Kubernetes cluster. This code will be distributed from GitHub.
