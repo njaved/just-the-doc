@@ -4,13 +4,4 @@ theme: just-the-docs
 url: https://njaved.github.io/just-the-doc
 aux_links: # remove if you don't want this link to appear on your pages
   Template Repository: https://njaved.github.io/just-the-doc
-
-# Enable the custom stylesheet
-just_the_docs:
-  palette:
-    primary:
-      color: "#000000"    # Black
-      text-color: "#ffffff"  # White for better contrast
-    secondary:
-      color: "#333333"    # Dark Gray
-      text-color: "#ffffff"
+color_scheme: custome_scheme
