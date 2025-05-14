@@ -5,7 +5,7 @@ url: https://njaved.github.io/just-the-doc
 aux_links: # remove if you don't want this link to appear on your pages
   GitHub Repository: https://github.com/njaved/just-the-doc/
 color_scheme: colors
-footer_content: "Copyright &copy; 2017-2020 Foundations Team. Distributed by an <a href=\"https://njaved.github.io/just-the-doc.</a>"
+footer_content: "Copyright &copy; 2017-2020 CDC. Distributed by an <a href=\"https://github.com/njaved/just-the-doc\">Foundations Team.</a>"
 last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
 last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
 
