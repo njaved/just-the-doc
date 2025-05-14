@@ -10,7 +10,10 @@ last_edit_timestamp: true # show or hide edit time - page must have `last_modifi
 last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
 back_to_top: true
 back_to_top_text: "Back to top"
-
+just_the_docs:
+  toc:
+    min_level: 1
+    max_level: 2
 # Footer "Edit this page on GitHub" link text
 #gh_edit_link: true # show or hide edit this page link
 #gh_edit_link_text: "Edit this page on GitHub."

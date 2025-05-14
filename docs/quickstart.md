@@ -34,13 +34,13 @@ Tools to Install
 ## 1. Set Up AWS Infrastructure - Terraform
 
 
-## Prepare the Directory
+### Prepare the Directory
 ```js
 mkdir -p ~/nbs-setup/terraform/aws/nbs7-mySTLT-test
 cd ~/nbs-setup/terraform/aws/nbs7-mySTLT-test
 ```
 
-## Download Terraform Configuration
+### Download Terraform Configuration
 Clone the infrastructure repo:
 ```js
 git clone https://github.com/CDCgov/NEDSS-Infrastructure.git
@@ -50,7 +50,7 @@ Copy standard template:
 cp -pr terraform/aws/samples/NBS7_standard terraform/aws/nbs7-mySTLT-test
 ```
 
-## Customize Variables
+### Customize Variables
 - Edit terraform.tfvars with your environment-specific values (account ID, VPC CIDRs, DNS, IAM roles).
 
 ### Initialize and Apply Terraform
