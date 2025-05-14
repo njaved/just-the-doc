@@ -10,7 +10,7 @@ This quick guide provides a simple step-by-step approach for deploying the NBS 7
 This guide is NOT meant for a production deployment. Please review System Administrator Guide for a full production deployment and guidelines.
 
 
-Prerequisites
+## Prerequisites
 Tools to Install
 AWS CLI (v2.15+)
 

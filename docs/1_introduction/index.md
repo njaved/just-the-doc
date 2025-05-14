@@ -9,14 +9,22 @@ nav_order: 2
 The Modernized NBS 7 system is built to provide a straightforward transition from classic NBS Version 6 systems. It integrates seamlessly, layering on improved interfaces and functions, with the with classic systems that have already been deployed. Users will see a composite of the new features from NBS 7 Modernized and old features from classic NBS 6.
 {: .fs-6 .fw-300 }
 
+## Revision History
+
+| Date         | Description        | Author |
+|:-------------|:------------------|:-------|
+| December 16th, 2024 | 7.8.0 Minor Release | Anand Logan, Ragul Shanmugam, Upasana Pattnaik, Kashyap Ramakur, Aaron Chapman, Duc Nguyen, Subba Reddy Alla, Chuck Moss  |
+
+
+
 ## Purpose
 The purpose of this document is to help an NBS system administrator deploy the NBS 7 infrastructure and microservices in an AWS environment. It will provide the information needed to set up the required environment, as well as convey a common understanding of the initial install.
 
 ## Runtime Environment Support
-NBS 7 supports AWS and Azure as runtime options. The underlying system itself has been developed using a cloud-agnostic approach. This guide targets the AWS runtime. For more information on Azure, please contact NBSSupport@cdc.gov. Future versions of this guide will cover other cloud runtime environments that support Kubernetes such as Google Cloud Platform and Azure.
+NBS 7 supports AWS and Azure as runtime options. The underlying system itself has been developed using a cloud-agnostic approach. This guide targets the AWS runtime. For more information on Azure, please contact [NBSSupport@cdc.gov](mailto:NBSSupport@cdc.gov). Future versions of this guide will cover other cloud runtime environments that support Kubernetes such as Google Cloud Platform and Azure.
 
 ## Intended Audience
-This guide is intended to be used to install NBS 7, a complex cloud-native application. It assumes familiarity with cloud technologies and tools: knowledge of your cloud service provider (e.g. AWS), runtime environment (e.g. Kubernetes), experience running Terraform and Helm., and experience debugging routine systems and infrastructure problems. You will need administrator-level access to your runtime environment, and access to a local system with a set of installed prerequisites. Please see the Prerequisites and Dependencies section below.  
+This guide is intended to be used to install NBS 7, a complex cloud-native application. It assumes familiarity with cloud technologies and tools: knowledge of your cloud service provider (e.g. AWS), runtime environment (e.g. Kubernetes), experience running Terraform and Helm., and experience debugging routine systems and infrastructure problems. You will need administrator-level access to your runtime environment, and access to a local system with a set of installed prerequisites. Please see the Prerequisites and Dependencies section below.
 
 
 <!-- This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
