@@ -5,6 +5,14 @@ nav_order: 3
 nav_enabled: true
 ---
 
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
 You must have the following prerequisites in place before proceeding with the installation.
 
 ## AWS environment
@@ -41,6 +49,7 @@ Your AWS environment must:
 | Persistent Store | EFS | 500 GB |
 
 #### Software Requirements
+{: .no_toc }
 
 | **Software**        | **Version**                   | **Comments**                                              |
 |---------------------|-------------------------------|-----------------------------------------------------------|
@@ -59,12 +68,12 @@ Your AWS environment must:
 
 
 ## Encryption Management
-
+{: .no_toc }
 AWS infrastructure storage services like AWS EBS, EFS, and RDS utilize AWS Key Management Store (KMS) for encryption, ensuring a 
 robust layer of security.
 
 ## End User Authentication
-
+{: .no_toc }
 The NBS 7 system will support end user authentication by integrating with a standards-based SSO system. It is designed to be deployed 
 as a protected endpoint within your preexisting SSO ecosystem, and can be configured to work with a wide variety of standards compliant 
 Identity Providers (e.g. Okta, AD).
@@ -84,7 +93,7 @@ Identity Provider (IdP) and a proxy is available on request. To request it, plea
 [https://cdcnbscentral.com/projects/nbs700/issues/new](https://cdcnbscentral.com/projects/nbs700/issues/new)
 
 ## Management Machine Setup
-
+{: .no_toc }
 You will also need a local or cloud hosted workstation (e.g. CloudShell) with the set of tools required to configure, deploy and maintain the 
 NBS 7 system. The following tools should be installed on a local or cloud-based management machine to support this work:
 
@@ -111,7 +120,7 @@ NBS 7 system. The following tools should be installed on a local or cloud-based 
   [https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html)
 
 ## Network Access
-
+{: .no_toc }
 Installation of the NBS 7 Modern infrastructure and microservices will occur using a new VPC, which is provisioned using the Terraform 
 scripts included in the steps below. 
 
@@ -121,10 +130,3 @@ publicly accessible.
 
 Furthermore, you should have a team member who is familiar with Terraform and has experience using it to create infrastructure. This 
 individual should have operational knowledge of Terraform, even if they are not a dedicated Terraform developer.
-
-## NBS 7 Base Application  
-### Installation Guide & Smoke Tests
-
-Installation of NBS 7 has three major phases. In the first phase you set up the environment and infrastructure, including k8s, in AWS, 
-primarily by using Terraform. In the second phase you start up the workloads/pods in k8s, primarily using Helm (with a bit more Terraform).
-
