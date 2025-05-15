@@ -1,5 +1,5 @@
 ---
-title: NBS7 Base Application
+title: AWS Infrastructure
 layout: page
 nav_order: 4
 nav_enabled: true
@@ -13,7 +13,7 @@ nav_enabled: true
 
 ---
 
-# NBS 7 Base Application  
+# AWS Infrastructure 
 ### Installation Guide & Smoke Tests
 {: .no_toc }
 

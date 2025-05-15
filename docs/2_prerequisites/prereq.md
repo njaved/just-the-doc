@@ -1,5 +1,5 @@
 ---
-title: Prerequisites and Dependencies
+title: Prerequisites
 layout: page
 nav_order: 3
 nav_enabled: true
