@@ -102,3 +102,99 @@ cd terraform/aws/nbs7-mySTLT-test
 |-----------|--------------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------|
 | bucket    | `cdc-nbs-terraform-<EXAMPLE_ACCOUNT_NUM>`                    | `cdc-nbs-terraform-12345678901213`                | S3 bucket to store infrastructure artifacts                                 |
 | key       | `cdc-nbs-SITE_NAME-modern/infrastructure-artifacts`          | `cdc-nbs-fts3-modern/infrastructure-artifacts`    | Path for the artifacts inside the S3 bucket. The bucket needs to exist before running `terraform apply`, but the path will be created automatically. |
+
+8. Review the inbound rules on the security groups attached to your database instance and ensure that the CIDR you intend to use with your NBS 7 VPC (modern-cidr) is allowed to access the database.
+
+a. For e.g if the modern-cidr from the Table-1 is 10.20.0.0/16, there should be at least one rule in a security group associated to your database that allows MSSQL inbound access from your modern-cidr block
+
+
+
+9. Make sure you are authenticated to AWS. Confirm access to the intended account using the following command. (More information about authenticating to AWS can be found at the following link.)
+```
+$ aws sts get-caller-identity
+{
+    "UserId": "AIDBZMOZ03E7R88J3DBTZ",
+    "Account": "123456789012",
+    "Arn": "arn:aws:iam::123456789012:user/lincolna"
+}
+```
+
+10. Terraform stores its state in an S3 bucket. The commands below assume that you are running Terraform authenticated to the same AWS account that contains your existing NBS 6 application. Please adjust accordingly if this does not match your setup.
+
+a.Change directory to the account configuration directory if not already, i.e. the one containing terraform.tfvars, and terraform.tf
+
+```
+cd terraform/aws/nbs7-mySTLT-test
+```
+b.Initialize Terraform by running:
+
+```
+terraform init
+```
+c. Run “terraform plan” to enable it to calculate the set of changes that need to be applied:
+
+```
+terraform plan
+```
+
+Note: One warning is expected (due to a bug in the Hashicorp EKS module):
+
+```
+Warning: Argument is deprecated
+   with module.eks_nbs.module.eks.aws_eks_addon.this["aws-ebs-csi-driver"],
+   on .terraform/modules/eks_nbs.eks/main.tf line 392, in resource "aws_eks_addon" "this":
+  392:   resolve_conflicts        = try(each.value.resolve_conflicts, "OVERWRITE")
+ The "resolve_conflicts" attribute can't be set to "PRESERVE" on initial resource creation. Use "resolve_conflicts_on_create" and/or "resolve_conflicts_on_update" instead
+```
+
+d. Review the changes carefully to make sure that they 1) match your intention, and 2) do not unintentionally disturb other configuration on which you depend. Then run “terraform apply”:
+
+```
+terraform apply
+```
+
+e. If terraform apply generates errors, review and resolve the errors, and then rerun step d.
+
+11. Verify Terraform was applied as expected by examining the logs
+
+12. Verify the newly created VPC and subnets were created as expected and confirm that the CIDR blocks you defined exist in the Route Tables
+
+13. Verify the EKS Kubernetes cluster was created by selecting the cluster and inspecting Resources->Pods, Compute (expect 30+ pods at this point, and 3-5 compute nodes as per the min/max nodes defined in terraform/aws/app-infrastructure/eks-nbs/variables.tf)
+
+14. Now that the infrastructure has been created using terraform, deploy Kubernetes (K8s) support services in the Kubernetes cluster via the following steps
+
+a. Start the Terminal/command line:
+
+        - Make sure you are still authenticated with AWS (reference the following Configuration and credential file settings).
+
+        - Authenticate into the Kubernetes cluster(EKS) using the following command and the cluster name you deployed in the environment
+
+
+        ```
+        aws eks --region us-east-1 update-kubeconfig --name <clustername> # e.g. cdc-nbs-sandbox
+        ```
+        
+        Note: You should see a line “Added new context ….“.
+
+        - If the above command errors out, check
+
+        1. there are no issues with the AWS CLI installation
+
+        2. you have set the correct AWS environment variables
+
+        3. you are using the correct cluster name (as per the EKS management console) “
+
+b. Run the following command to check if you are able to run commands to interact with the Kubernetes objects and the cluster.
+
+```
+kubectl get pods --namespace=cert-manager
+```
+
+The above command should return 3 pods. If it doesn’t refresh the AWS credentials and repeat steps in 14 a.
+
+```
+kubectl get nodes
+```
+The above command should list 3 worker nodes for the cluster.
+
+15. Congratulations! You have installed your core infrastructure and Kubernetes cluster! Next, we will configure your cluster using helm charts.
