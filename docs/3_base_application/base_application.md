@@ -58,28 +58,19 @@ cd terraform/aws/nbs7-mySTLT-test
 | **Parameter**                         | **Template Value**                            | **Example**                              | **Description**                                                                                                                                     |
 |--------------------------------------|------------------------------------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
 | `target_account_id`                  | `EXAMPLE_ACCOUNT_ID`                          | `123456789012`                           | Account ID for the infrastructure deployment [AWS Account ID](https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/account)     |
-
-#### Modern Config
-
-| **Parameter**              | **Template Value**              | **Example**                       | **Description**                                                                                                                                     |
+| **Modern Config** | | | |
 |---------------------------|----------------------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
 | `modern-cidr`             | `10.OCTET2a.0.0/16`             | `10.70.0.0/16`                    | 1. Assign a new CIDR range for the "modern" VPC using local addressing conventions with room for at least 4 x /24 subnets. Replace all references to `OCTET2a` with a CIDR from your organization if the `10.x.x.x` block is used, otherwise use a CIDR meeting subnet requirements. <br> 2. When the terraform is applied later, it will create a new VPC for the required resources. |
 | `modern-private_subnets` | `["10.OCTET2a.1.0/24", "10.OCTET2a.3.0/24"]` | `10.70.1.0/24, 10.70.3.0/24`     | Assign a new modern private subnet CIDR range                                                                                                       |
 | `modern-public_subnets`  | `["10.OCTET2a.2.0/24", "10.OCTET2a.4.0/24"]` | `10.70.2.0/24, 10.70.4.0/24`     | Assign a new modern public subnet CIDR range                                                                                                        |
-
-
-#### Legacy Config
-
+| **Legacy Config** | | | |
 | **Parameter**                         | **Template Value**                 | **Example**                             | **Description**                                                                                                            |
 |--------------------------------------|-----------------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
 | `legacy-cidr`                        | `10.OCTET2b.0.0/16`               | `10.71.0.0/16`                          | Existing VPC CIDR for NBS classic application `legacy-cidr`                                                               |
 | `legacy-vpc-id`                      | `vpc-LEGACY-EXAMPLE`             | `vpc-12345678901234567`                | Existing NBS Classic application VPC ID `legacy-vpc-id`                                                                   |
 | `legacy_vpc_private_route_table_id` | `rtb-PRIVATE-EXAMPLE`            | `rtb-1234567890abcdef`                 | This is the route table used by the subnets to which the database is attached. (Assuming the RDS instance is on private subnets with corresponding route tables) |
 | `legacy_vpc_public_route_table_id`  | `rtb-PUBLIC-EXAMPLE`             | `rtb-fedcba0987654321`                | This is the route table used by the subnets the application servers and/or load balancer are attached to (assume these are on “public” subnets)   |
-
-
-#### Other Key Parameters
-
+| **Other Key Parameters** | | | |
 | **Parameter**              | **Template Value**                                  | **Example**                                 | **Description**                                                                                          |
 |---------------------------|-----------------------------------------------------|---------------------------------------------|----------------------------------------------------------------------------------------------------------|
 | `tags - Environment`      | `EXAMPLE`                                           | `fts3`                                      | Target environment                                                                                       |
