@@ -67,6 +67,7 @@ cd terraform/aws/nbs7-mySTLT-test
 | `modern-private_subnets` | `["10.OCTET2a.1.0/24", "10.OCTET2a.3.0/24"]` | `10.70.1.0/24, 10.70.3.0/24`     | Assign a new modern private subnet CIDR range                                                                                                       |
 | `modern-public_subnets`  | `["10.OCTET2a.2.0/24", "10.OCTET2a.4.0/24"]` | `10.70.2.0/24, 10.70.4.0/24`     | Assign a new modern public subnet CIDR range                                                                                                        |
 
+
 #### Legacy Config
 
 | **Parameter**                         | **Template Value**                 | **Example**                             | **Description**                                                                                                            |
@@ -76,6 +77,7 @@ cd terraform/aws/nbs7-mySTLT-test
 | `legacy_vpc_private_route_table_id` | `rtb-PRIVATE-EXAMPLE`            | `rtb-1234567890abcdef`                 | This is the route table used by the subnets to which the database is attached. (Assuming the RDS instance is on private subnets with corresponding route tables) |
 | `legacy_vpc_public_route_table_id`  | `rtb-PUBLIC-EXAMPLE`             | `rtb-fedcba0987654321`                | This is the route table used by the subnets the application servers and/or load balancer are attached to (assume these are on “public” subnets)   |
 
+
 #### Other Key Parameters
 
 | **Parameter**              | **Template Value**                                  | **Example**                                 | **Description**                                                                                          |
@@ -84,7 +86,8 @@ cd terraform/aws/nbs7-mySTLT-test
 | `aws_admin_role_name`     | `AWSReservedSSO_AWSAdministratorAccess_EXAMPLE_ROLE` | `AWSReservedSSO_AWSAdministratorAccess_12345678abcdefg` | This is the role your IAM/SSO user assumes when logged in. Get the value using: `aws sts get-caller-identity` |
 | `fluentbit_bucket_prefix` | `EXAMPLE-fluentbit-bucket`                          | `fts3-fluentbit-bucket`                     | An S3 bucket that will be created to capture consolidated logs via FluentBit                            |
 
-<h4 align="center"> Table-1 (terraform.tfvars) </h4>
+
+#### Table-1 (terraform.tfvars)
 
 6. Edit file `terraform.tfvars` and fill the variables from the *Table-1*.
 
@@ -96,17 +99,18 @@ cd terraform/aws/nbs7-mySTLT-test
 
     c. Edit file `terraform.tf`, change the bucket name and `SITE_NAME` in the file as suggested in the *Table-2*
 
-<h4 align="center"> Table-2 </h4>
+
+#### Table-2
 
 | Parameter | Template Value                                               | Example                                            | Description                                                                 |
 |-----------|--------------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------|
 | bucket    | `cdc-nbs-terraform-<EXAMPLE_ACCOUNT_NUM>`                    | `cdc-nbs-terraform-12345678901213`                | S3 bucket to store infrastructure artifacts                                 |
 | key       | `cdc-nbs-SITE_NAME-modern/infrastructure-artifacts`          | `cdc-nbs-fts3-modern/infrastructure-artifacts`    | Path for the artifacts inside the S3 bucket. The bucket needs to exist before running `terraform apply`, but the path will be created automatically. |
 
+
 8. Review the inbound rules on the security groups attached to your database instance and ensure that the CIDR you intend to use with your NBS 7 VPC (modern-cidr) is allowed to access the database.
 
-a. For e.g if the modern-cidr from the Table-1 is 10.20.0.0/16, there should be at least one rule in a security group associated to your database that allows MSSQL inbound access from your modern-cidr block
-
+    a. For e.g if the modern-cidr from the Table-1 is 10.20.0.0/16, there should be at least one rule in a security group associated to your database that allows MSSQL inbound access from your modern-cidr block
 
 
 9. Make sure you are authenticated to AWS. Confirm access to the intended account using the following command. (More information about authenticating to AWS can be found at the following link.)
@@ -167,36 +171,36 @@ $ aws sts get-caller-identity
 
     a. Start the Terminal/command line:
 
-            - Make sure you are still authenticated with AWS (reference the following Configuration and credential file settings).
+        - Make sure you are still authenticated with AWS (reference the following Configuration and credential file settings).
 
-            - Authenticate into the Kubernetes cluster(EKS) using the following command and the cluster name you deployed in the environment
+        - Authenticate into the Kubernetes cluster(EKS) using the following command and the cluster name you deployed in the environment
 
 
-            ```
-            aws eks --region us-east-1 update-kubeconfig --name <clustername> # e.g. cdc-nbs-sandbox
-            ```
-            
-            Note: You should see a line “Added new context ….“.
+        ```
+        aws eks --region us-east-1 update-kubeconfig --name <clustername> # e.g. cdc-nbs-sandbox
+        ```
+        
+        Note: You should see a line “Added new context ….“.
 
-            - If the above command errors out, check
+        - If the above command errors out, check
 
             1. there are no issues with the AWS CLI installation
 
             2. you have set the correct AWS environment variables
 
-            3. you are using the correct cluster name (as per the EKS management console) “
+            3. you are using the correct cluster name (as per the EKS management console)
 
-    b. Run the following command to check if you are able to run commands to interact with the Kubernetes objects and the cluster.
+        b. Run the following command to check if you are able to run commands to interact with the Kubernetes objects and the cluster.
 
-    ```
-    kubectl get pods --namespace=cert-manager
-    ```
+        ```
+        kubectl get pods --namespace=cert-manager
+        ```
 
-    The above command should return 3 pods. If it doesn’t refresh the AWS credentials and repeat steps in 14 a.
+        The above command should return 3 pods. If it doesn’t refresh the AWS credentials and repeat steps in 14 a.
 
-    ```
-    kubectl get nodes
-    ```
-    The above command should list 3 worker nodes for the cluster.
+        ```
+        kubectl get nodes
+        ```
+        The above command should list 3 worker nodes for the cluster.
 
 15. Congratulations! You have installed your core infrastructure and Kubernetes cluster! Next, we will configure your cluster using helm charts.
