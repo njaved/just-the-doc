@@ -50,12 +50,10 @@ contains other options than “standard”, view the README file in that directo
 cp -pr terraform/aws/samples/NBS7_standard terraform/aws/nbs7-mySTLT-test
 cd terraform/aws/nbs7-mySTLT-test
 ```
-
-
 **NOTE**: Before editing **terraform.tfvars** and **terraform.tf** files below, you may reference detailed information for each TF module under the
 “terraform/aws/app-infrastructure” in a readme file in each modules directory. Do not edit files in the individual modules.
+5. Customize terraform.tfvars configuration file. Before editing terraform.tfvars, collect the following information in the Table-1 below from your existing environment
 
-### Terraform Variables Table
 
 | **Parameter**                         | **Template Value**                            | **Example**                              | **Description**                                                                                                                                     |
 |--------------------------------------|------------------------------------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -85,3 +83,22 @@ cd terraform/aws/nbs7-mySTLT-test
 | `tags - Environment`      | `EXAMPLE`                                           | `fts3`                                      | Target environment                                                                                       |
 | `aws_admin_role_name`     | `AWSReservedSSO_AWSAdministratorAccess_EXAMPLE_ROLE` | `AWSReservedSSO_AWSAdministratorAccess_12345678abcdefg` | This is the role your IAM/SSO user assumes when logged in. Get the value using: `aws sts get-caller-identity` |
 | `fluentbit_bucket_prefix` | `EXAMPLE-fluentbit-bucket`                          | `fts3-fluentbit-bucket`                     | An S3 bucket that will be created to capture consolidated logs via FluentBit                            |
+
+<h4 align="center"> Table-1 (terraform.tfvars) </h4>
+
+6. Edit file `terraform.tfvars` and fill the variables from the *Table-1*.
+
+7. Customize `terraform.tf` configuration file. Before editing `terraform.tf`:
+
+    a. You will need a bucket to hold terraform working assets. Decide on the name, e.g. `cdc-nbs-terraform-<EXAMPLE_ACCOUNT_NUM>`
+
+    b. Create an S3 bucket e.g. `cdc-nbs-terraform-<EXAMPLE_ACCOUNT_NUM>` on the AWS console
+
+    c. Edit file `terraform.tf`, change the bucket name and `SITE_NAME` in the file as suggested in the *Table-2*
+
+<h4 align="center"> Table-2 </h4>
+
+| Parameter | Template Value                                               | Example                                            | Description                                                                 |
+|-----------|--------------------------------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------|
+| bucket    | `cdc-nbs-terraform-<EXAMPLE_ACCOUNT_NUM>`                    | `cdc-nbs-terraform-12345678901213`                | S3 bucket to store infrastructure artifacts                                 |
+| key       | `cdc-nbs-SITE_NAME-modern/infrastructure-artifacts`          | `cdc-nbs-fts3-modern/infrastructure-artifacts`    | Path for the artifacts inside the S3 bucket. The bucket needs to exist before running `terraform apply`, but the path will be created automatically. |

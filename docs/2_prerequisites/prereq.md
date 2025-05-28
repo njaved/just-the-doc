@@ -27,7 +27,7 @@ Your AWS environment must:
 
 ## Hardware Requirements (AWS)
 
-#### High Volume STLTs
+<h4 align="center"> High Volume STLTs </h4>
 {: .no_toc }
 
 | **Type** | **Resource** | **Size** |
@@ -37,8 +37,7 @@ Your AWS environment must:
 | Persistent Store | EFS | 1 TB |
 
 
-
-#### Low Volume STLTs
+<h4 align="center"> Low Volume STLTs </h4>
 {: .no_toc }
 
 
