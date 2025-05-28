@@ -121,39 +121,41 @@ $ aws sts get-caller-identity
 
 10. Terraform stores its state in an S3 bucket. The commands below assume that you are running Terraform authenticated to the same AWS account that contains your existing NBS 6 application. Please adjust accordingly if this does not match your setup.
 
-a.Change directory to the account configuration directory if not already, i.e. the one containing terraform.tfvars, and terraform.tf
+    a.Change directory to the account configuration directory if not already, i.e. the one containing terraform.tfvars, and terraform.tf
 
-```
-cd terraform/aws/nbs7-mySTLT-test
-```
-b.Initialize Terraform by running:
+    ```
+    cd terraform/aws/nbs7-mySTLT-test
+    ```
 
-```
-terraform init
-```
-c. Run “terraform plan” to enable it to calculate the set of changes that need to be applied:
+    b.Initialize Terraform by running:
 
-```
-terraform plan
-```
+    ```
+    terraform init
+    ```
 
-Note: One warning is expected (due to a bug in the Hashicorp EKS module):
+    c. Run “terraform plan” to enable it to calculate the set of changes that need to be applied:
 
-```
-Warning: Argument is deprecated
-   with module.eks_nbs.module.eks.aws_eks_addon.this["aws-ebs-csi-driver"],
-   on .terraform/modules/eks_nbs.eks/main.tf line 392, in resource "aws_eks_addon" "this":
-  392:   resolve_conflicts        = try(each.value.resolve_conflicts, "OVERWRITE")
- The "resolve_conflicts" attribute can't be set to "PRESERVE" on initial resource creation. Use "resolve_conflicts_on_create" and/or "resolve_conflicts_on_update" instead
-```
+    ```
+    terraform plan
+    ```
 
-d. Review the changes carefully to make sure that they 1) match your intention, and 2) do not unintentionally disturb other configuration on which you depend. Then run “terraform apply”:
+    Note: One warning is expected (due to a bug in the Hashicorp EKS module):
 
-```
-terraform apply
-```
+    ```
+    Warning: Argument is deprecated
+    with module.eks_nbs.module.eks.aws_eks_addon.this["aws-ebs-csi-driver"],
+    on .terraform/modules/eks_nbs.eks/main.tf line 392, in resource "aws_eks_addon" "this":
+    392:   resolve_conflicts        = try(each.value.resolve_conflicts, "OVERWRITE")
+    The "resolve_conflicts" attribute can't be set to "PRESERVE" on initial resource creation. Use "resolve_conflicts_on_create" and/or "resolve_conflicts_on_update" instead
+    ```
 
-e. If terraform apply generates errors, review and resolve the errors, and then rerun step d.
+    d. Review the changes carefully to make sure that they 1) match your intention, and 2) do not unintentionally disturb other configuration on which you depend. Then run “terraform apply”:
+
+    ```
+    terraform apply
+    ```
+
+    e. If terraform apply generates errors, review and resolve the errors, and then rerun step d.
 
 11. Verify Terraform was applied as expected by examining the logs
 
@@ -163,38 +165,38 @@ e. If terraform apply generates errors, review and resolve the errors, and then 
 
 14. Now that the infrastructure has been created using terraform, deploy Kubernetes (K8s) support services in the Kubernetes cluster via the following steps
 
-a. Start the Terminal/command line:
+    a. Start the Terminal/command line:
 
-        - Make sure you are still authenticated with AWS (reference the following Configuration and credential file settings).
+            - Make sure you are still authenticated with AWS (reference the following Configuration and credential file settings).
 
-        - Authenticate into the Kubernetes cluster(EKS) using the following command and the cluster name you deployed in the environment
+            - Authenticate into the Kubernetes cluster(EKS) using the following command and the cluster name you deployed in the environment
 
 
-        ```
-        aws eks --region us-east-1 update-kubeconfig --name <clustername> # e.g. cdc-nbs-sandbox
-        ```
-        
-        Note: You should see a line “Added new context ….“.
+            ```
+            aws eks --region us-east-1 update-kubeconfig --name <clustername> # e.g. cdc-nbs-sandbox
+            ```
+            
+            Note: You should see a line “Added new context ….“.
 
-        - If the above command errors out, check
+            - If the above command errors out, check
 
-        1. there are no issues with the AWS CLI installation
+            1. there are no issues with the AWS CLI installation
 
-        2. you have set the correct AWS environment variables
+            2. you have set the correct AWS environment variables
 
-        3. you are using the correct cluster name (as per the EKS management console) “
+            3. you are using the correct cluster name (as per the EKS management console) “
 
-b. Run the following command to check if you are able to run commands to interact with the Kubernetes objects and the cluster.
+    b. Run the following command to check if you are able to run commands to interact with the Kubernetes objects and the cluster.
 
-```
-kubectl get pods --namespace=cert-manager
-```
+    ```
+    kubectl get pods --namespace=cert-manager
+    ```
 
-The above command should return 3 pods. If it doesn’t refresh the AWS credentials and repeat steps in 14 a.
+    The above command should return 3 pods. If it doesn’t refresh the AWS credentials and repeat steps in 14 a.
 
-```
-kubectl get nodes
-```
-The above command should list 3 worker nodes for the cluster.
+    ```
+    kubectl get nodes
+    ```
+    The above command should list 3 worker nodes for the cluster.
 
 15. Congratulations! You have installed your core infrastructure and Kubernetes cluster! Next, we will configure your cluster using helm charts.
