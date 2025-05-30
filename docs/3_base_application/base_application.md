@@ -160,14 +160,14 @@ $ aws sts get-caller-identity
 
         i. Make sure you are still authenticated with AWS (reference the following Configuration and credential file settings).
 
-        iI. Authenticate into the Kubernetes cluster(EKS) using the following command and the cluster name you deployed in the environment
+        ii. Authenticate into the Kubernetes cluster(EKS) using the following command and the cluster name you deployed in the environment
 
 
         ```
         aws eks --region us-east-1 update-kubeconfig --name <clustername> # e.g. cdc-nbs-sandbox
         ```
         
-        Note: You should see a line “Added new context ….“.
+        Note: You should see a line 'Added new context ….“.
 
         iii. If the above command errors out, check
 
@@ -188,6 +188,7 @@ $ aws sts get-caller-identity
         ```
         kubectl get nodes
         ```
+        
         The above command should list 3 worker nodes for the cluster.
 
 15. Congratulations! You have installed your core infrastructure and Kubernetes cluster! Next, we will configure your cluster using helm charts.
