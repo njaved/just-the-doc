@@ -46,7 +46,7 @@ cd ~/nbs-setup/terraform/aws/nbs7-mySTLT-test
 ```
 
 ### Download Terraform Configuration
-{: .no_toc }
+
 Clone the infrastructure repo:
 ```js
 git clone https://github.com/CDCgov/NEDSS-Infrastructure.git
