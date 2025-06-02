@@ -46,7 +46,7 @@ cd ~/nbs-setup/terraform/aws/nbs7-mySTLT-test
 ```
 
 ### Download Terraform Configuration
-
+{: .no_toc }
 Clone the infrastructure repo:
 ```js
 git clone https://github.com/CDCgov/NEDSS-Infrastructure.git
@@ -58,7 +58,7 @@ cp -pr terraform/aws/samples/NBS7_standard terraform/aws/nbs7-mySTLT-test
 
 ### Customize Variables
 {: .no_toc }
-- Edit terraform.tfvars with your environment-specific values (account ID, VPC CIDRs, DNS, IAM roles).
+- Update the terraform.tfvars and terraform.tf with your environment-specific values by following the instructions [here] (https://github.com/CDCgov/NEDSS-Infrastructure/blob/main/terraform/aws/samples/NBS7_standard/README.md).
 
 ### Initialize and Apply Terraform
 {: .no_toc }
