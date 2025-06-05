@@ -15,10 +15,33 @@ nav_enabled: true
 {:toc}
 
 
-This quick guide provides a simple step-by-step approach for deploying the NBS 7.9 infrastructure and microservices in an AWS environment. It is intended for experienced administrators who are familiar with AWS, Kubernetes, Helm, and Terraform. 
+This quick guide provides a simple step-by-step approach for deploying the NBS 7 infrastructure and microservices in an AWS environment. It is intended for experienced administrators who are familiar with AWS, Kubernetes, Helm, and Terraform. 
 
-This guide is NOT meant for a production deployment. Please review System Administrator Guide for a full production deployment and guidelines.
+This guide is NOT meant for a production deployment. Please review [System Administrator Guide](https://cdc-nbs.atlassian.net/wiki/spaces/NM/pages/1592754177/NBS+7.10+System+Administrator+Guide) for a full production deployment and guidelines.
 
+### Following resources will be installed and configured with this guide
+
+#### Terraform
+- Modern VPC, Subnets, Route Tables
+- EKS Cluster, Nodes
+- Network Load Balancer
+- MSK
+- Amazon Prometheus
+- Amazon Grafana
+- EFS
+- KMS
+- S3 Bucket
+
+#### Manual
+- Route53 Updates
+
+#### NBS7 Core Services
+1. Elasticsearch - For lightning-fast searches.
+2. Modernization API - This service incorporates essential modern NBS features such as patient search, event search, patient profile, investigations, etc.
+3. Nifi - Populates Elasticsearch indices from the NBS database.
+4. NBS Gateway - Efficiently manages intricate strangler routing logic between modern and legacy NBS.
+5. Data Ingestion - Enables NBS to seamlessly ingest HL7 data from labs and other entities into the NBS system.
+6. Keycloak - Primary Identity Provider (IDP). Also used for token management and SSO integration, for example, OAuth, SAML integration with Okta, etc.
 
 ## Prerequisites
 Tools to Install
