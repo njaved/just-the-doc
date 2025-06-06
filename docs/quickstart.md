@@ -36,12 +36,12 @@ This guide is NOT meant for a production deployment. Please review [System Admin
 - Route53 Updates
 
 #### NBS7 Core Services
-1. Elasticsearch - For lightning-fast searches.
-2. Modernization API - This service incorporates essential modern NBS features such as patient search, event search, patient profile, investigations, etc.
-3. Nifi - Populates Elasticsearch indices from the NBS database.
-4. NBS Gateway - Efficiently manages intricate strangler routing logic between modern and legacy NBS.
-5. Data Ingestion - Enables NBS to seamlessly ingest HL7 data from labs and other entities into the NBS system.
-6. Keycloak - Primary Identity Provider (IDP). Also used for token management and SSO integration, for example, OAuth, SAML integration with Okta, etc.
+1. **Elasticsearch** - For lightning-fast searches.
+2. **Modernization API** - This service incorporates essential modern NBS features such as patient search, event search, patient profile, investigations, etc.
+3. **Nifi** - Populates Elasticsearch indices from the NBS database.
+4. **NBS Gateway** - Efficiently manages intricate strangler routing logic between modern and legacy NBS.
+5. **Data Ingestion** - Enables NBS to seamlessly ingest HL7 data from labs and other entities into the NBS system.
+6. **Keycloak** - Primary Identity Provider (IDP). Also used for token management and SSO integration, for example, OAuth, SAML integration with Okta, etc.
 
 ## Prerequisites
 Tools to Install
