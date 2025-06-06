@@ -152,8 +152,8 @@ kubectl get pods -A
 ```
 
 ## Install Keycloak
-**Create Keycloak Database. Make sure to update the database password.**
 {: .no_toc }
+**Create Keycloak Database. Make sure to update the database password.**
 ```sql
 use master
     IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'keycloak')
