@@ -222,12 +222,14 @@ helm install modernization-api -f ./modernization-api/values.yaml modernization-
 
 ### Deploy NiFi
 {: .no_toc }
-```js
+Update the required parameters in `values.yaml` by following the table [here](https://github.com/CDCgov/NEDSS-Helm/blob/main/charts/nifi-efs/README.md)
+```bash
 helm install nifi -f ./nifi-efs/values.yaml nifi-efs
 ```
 
 ### Deploy NBS Gateway
 {: .no_toc }
+Update the required parameters in `values.yaml` by following the table [here](https://github.com/CDCgov/NEDSS-Helm/blob/main/charts/nbs-gateway/README.md)
 ```js
 helm install nbs-gateway -f ./nbs-gateway/values.yaml nbs-gateway
 ```
@@ -257,6 +259,9 @@ We recommend before going live to review the full detailed installation guide
 ## Cleanup and Maintenance
 - Regularly validate cluster health.
 - Ensure data retention and backup policies are in place.
+
+## Go Live
+We recommend before going live, review the [System Administrator Guide](https://cdc-nbs.atlassian.net/wiki/spaces/NM/pages/1592754177/NBS+7.10+System+Administrator+Guide).
 
 ## Support
 - For support, contact NBSSupport@cdc.gov.
