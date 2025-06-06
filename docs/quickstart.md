@@ -170,6 +170,32 @@ BEGIN
 END
 ```
 
+### Install Keycloak Container
+
+Edit the following parameters in `<helm extract directory>/charts/keycloak/values.yml`:
+
+- `kcDbPassword`
+- `kcDbUrl`
+- `keycloakAdminPassword`
+- `efsFileSystemId`
+```bash
+helm install keycloak --namespace default --create-namespace -f keycloak/values.yaml
+```
+
+### Port forward to access Keycloak admin interface
+```bash
+kubectl --namespace default port-forward "$POD_NAME" 8080;
+http://127.0.0.1:8080/auth
+```
+
+### Configure Realm, Users and Clients
+- Login as Keycloak admin user
+- Upload <helm extract directory>/charts/keycloak/extra/01-NBS-realm-with-DI-client.json
+- Upload <helm extract directory>/charts/keycloak/extra/05-nbs-users-nnd-client.json
+- Upload NBS Users helm from <helm extract directory>/charts/keycloak/extra/02-nbs-users-realm.json
+- Run partial import from nbs-users realm for <helm extract directory>/charts/keycloak/extra/03-nbs-users-base-users.json
+- Run partial import from nbs-users realm for <helm extract directory>/charts/keycloak/extra/04-nbs-users-development-clients.json
+
 ## Deploy NBS Microservices - Helm
 ### Deploy Elasticsearch
 {: .no_toc }
