@@ -244,21 +244,30 @@ kubectl get pods -A
 ## Validate Installation
 ### Manual Tests
 {: .no_toc }
-- Login to the NBS UI (e.g., https://app.example.com/nbs/login)
+- Login to the NBS UI (e.g., [https://app.example.com/nbs/login](https://app.example.com/nbs/login))
 - Check basic patient search functionality.
 
 ### Automated Tests
 {: .no_toc }
 - Use nbs-test-api.sh and nbs-test-webui.sh for basic API and UI smoke tests.
 
-## Go Live and Monitor
-We recommend before going live to review the full detailed installation guide
-- Verify DNS routing and load balancer configurations.
-- Monitor initial traffic, logs, and database connectivity.
 
-## Cleanup and Maintenance
-- Regularly validate cluster health.
-- Ensure data retention and backup policies are in place.
+## Cleanup
+Follow the steps below to cleanup environment
+
+```bash
+# Remove DNS entries
+1. app.<site_name>.<domain>.com
+2. data.<site_name>.<domain>.com
+
+# Remove nlb and ingress routing
+helm list --namespace ingress-nginx
+helm uninstall --namespace ingress-nginx ingress-nginx
+
+# Empty fluentbit s3 bucket manually
+
+terraform destroy
+```
 
 ## Go Live
 We recommend before going live, review the [System Administrator Guide](https://cdc-nbs.atlassian.net/wiki/spaces/NM/pages/1592754177/NBS+7.10+System+Administrator+Guide).
