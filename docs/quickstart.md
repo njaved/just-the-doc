@@ -96,8 +96,10 @@ terraform apply
 ### Validate Infrastructure
 {: .no_toc }
 - Confirm VPC, EKS cluster, subnets, and node groups are created.
-- Run:
+- Verify EKS cluster authentication and running pods & nodes:
 ```js
+aws eks --region us-east-1 update-kubeconfig --name <clustername> # e.g. cdc-nbs-sandbox
+kubectl get pods --namespace=cert-manager
 kubectl get nodes
 ```
 
@@ -107,6 +109,19 @@ kubectl get nodes
 ```js
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm install ingress-nginx ingress-nginx/ingress-nginx
+kubectl --namespace ingress-nginx get services -o wide -w ingress-nginx-controller
+kubectl get pods -n=ingress-nginx
+```
+
+### Create DNS Entries in Route53
+{: .no_toc }
+- Modernized NBS application pointed to the new network load balancer in front of your Kubernetes cluster
+```js
+app.<site_name>.<domain>.com
+```
+- Data Services pointed to the new network load balancer in front of your Kubernetes cluster
+```js
+data.<site_name>.<domain>.com
 ```
 
 ### Install Cert Manager (Optional)
@@ -114,6 +129,13 @@ helm install ingress-nginx ingress-nginx/ingress-nginx
 ```js
 helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true
+```
+
+### Install and Verify LinkerD (Optional)
+{: .no_toc }
+```js
+kubectl annotate namespace default "linkerd.io/inject=enabled"
+kubectl get namespace default -o=jsonpath='{.metadata.annotations}'
 ```
 
 ### Install Cluster Autoscaler (Optional)
