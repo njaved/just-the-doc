@@ -58,7 +58,7 @@ Tools to Install
 - Access to NBS 6 databases (SQL Server)
 - S3 bucket for Terraform state
 
-## 1. Set Up AWS Infrastructure - Terraform
+## Set Up AWS Infrastructure - Terraform
 
 
 ### Prepare the Directory
@@ -99,7 +99,7 @@ terraform apply
 kubectl get nodes
 ```
 
-## 2. Deploy Core Kubernetes Services - Helm
+## Deploy Core Kubernetes Services - Helm
 ### Install NGINX Ingress
 {: .no_toc }
 ```js
@@ -127,7 +127,7 @@ helm install cluster-autoscaler autoscaler/cluster-autoscaler -n kube-system
 kubectl get pods -A
 ```
 
-## 3. Deploy NBS Microservices - Helm
+## Deploy NBS Microservices - Helm
 ### Deploy Elasticsearch
 {: .no_toc }
 ```js
@@ -165,7 +165,7 @@ helm install nbs-gateway -f ./nbs-gateway/values.yaml nbs-gateway
 kubectl get pods -A
 ```
 
-## 4. Validate Installation
+## Validate Installation
 ### Manual Tests
 {: .no_toc }
 - Login to the NBS UI (e.g., https://app.example.com/nbs/login)
@@ -175,12 +175,12 @@ kubectl get pods -A
 {: .no_toc }
 - Use nbs-test-api.sh and nbs-test-webui.sh for basic API and UI smoke tests.
 
-## 5. Go Live and Monitor
+## Go Live and Monitor
 We recommend before going live to review the full detailed installation guide
 - Verify DNS routing and load balancer configurations.
 - Monitor initial traffic, logs, and database connectivity.
 
-## 6. Cleanup and Maintenance
+## Cleanup and Maintenance
 - Regularly validate cluster health.
 - Ensure data retention and backup policies are in place.
 
