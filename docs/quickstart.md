@@ -230,14 +230,47 @@ helm install nifi -f ./nifi-efs/values.yaml nifi-efs
 ### Deploy NBS Gateway
 {: .no_toc }
 Update the required parameters in `values.yaml` by following the table [here](https://github.com/CDCgov/NEDSS-Helm/blob/main/charts/nbs-gateway/README.md)
-```js
+```bash
 helm install nbs-gateway -f ./nbs-gateway/values.yaml nbs-gateway
+```
+
+### Deploy DataIngestion
+{: .no_toc }
+Data Ingest DB creation and user permission should be executed prior to the deployment of the data ingestion:
+```sql
+IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'NBS_DataIngest')
+BEGIN
+    CREATE DATABASE NBS_DataIngest
+END
+GO
+USE NBS_DataIngest
+GO
+```
+```sql
+use [NBS_ODSE];
+GO
+USE [NBS_DataIngest]
+GO
+CREATE USER [nbs_ods] FOR LOGIN [nbs_ods]
+GO
+USE [NBS_DataIngest]
+GO
+ALTER USER [nbs_ods] WITH DEFAULT_SCHEMA=[dbo]
+GO
+USE [NBS_DataIngest]
+GO
+ALTER ROLE [db_owner] ADD MEMBER [nbs_ods]
+GO
+```
+Update the required parameters in `values.yaml` by following the table [here](https://github.com/CDCgov/NEDSS-Helm/blob/main/charts/dataingestion-service/README.md)
+```bash
+helm install dataingestion-service -f ./dataingestion-service/values.yaml dataingestion-service
 ```
 
 ### Verify Services
 {: .no_toc }
 - Confirm all pods are running before moving on.
-```js
+```bash
 kubectl get pods -A
 ```
 
