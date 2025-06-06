@@ -152,7 +152,6 @@ kubectl get pods -A
 ```
 
 ## Install Keycloak
-{: .no_toc }
 **Create Keycloak Database. Make sure to update the database password.**
 ```sql
 use master
