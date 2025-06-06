@@ -208,19 +208,15 @@ http://127.0.0.1:8080/auth
 
 ### Deploy Elasticsearch
 {: .no_toc }
-```js
+Update the required parameters in `values.yaml` by following the table [here](https://github.com/CDCgov/NEDSS-Helm/blob/main/charts/elasticsearch-efs/README.md)
+```bash
 helm install elasticsearch -f ./elasticsearch-efs/values.yaml elasticsearch-efs
-```
-
-### Deploy Page-Builder API
-{: .no_toc }
-```js
-helm install page-builder-api -f ./page-builder-api/values.yaml page-builder-api
 ```
 
 ### Deploy Modernization API
 {: .no_toc }
-```js
+Update the required parameters in `values.yaml` by following the table [here](https://github.com/CDCgov/NEDSS-Helm/blob/main/charts/modernization-api/README.md)
+```bash
 helm install modernization-api -f ./modernization-api/values.yaml modernization-api
 ```
 
