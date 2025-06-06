@@ -83,6 +83,8 @@ cp -pr terraform/aws/samples/NBS7_standard terraform/aws/nbs7-mySTLT-test
 {: .no_toc }
 - Update the terraform.tfvars and terraform.tf with your environment-specific values by following the instructions [here](https://github.com/CDCgov/NEDSS-Infrastructure/blob/main/terraform/aws/samples/NBS7_standard/README.md).
 
+> ℹ️ **Review the inbound rules** on the security groups attached to your database instance and ensure that the CIDR you intend to use with your NBS 7 VPC (`modern-cidr`) is allowed to access the database.
+
 ### Initialize and Apply Terraform
 {: .no_toc }
 ```js
