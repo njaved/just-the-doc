@@ -197,6 +197,15 @@ http://127.0.0.1:8080/auth
 - Run partial import from nbs-users realm for <helm extract directory>/charts/keycloak/extra/04-nbs-users-development-clients.json
 
 ## Deploy NBS Microservices - Helm
+**Deploy the helm charts in the following order.**
+1. `elasticsearch-efs`
+2. `modernization-api`
+3. `nifi-efs`
+4. `nbs-gateway`
+5. `dataingestion`
+
+> ℹ️ Run the below commands from `<helm extract directory>/charts` directory
+
 ### Deploy Elasticsearch
 {: .no_toc }
 ```js
