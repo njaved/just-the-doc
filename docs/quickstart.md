@@ -169,6 +169,7 @@ BEGIN
     CREATE USER NBS_keycloak FOR LOGIN NBS_keycloak;
     EXEC sp_addrolemember N'db_owner', N'NBS_keycloak'
 END
+```
 
 ## Deploy NBS Microservices - Helm
 ### Deploy Elasticsearch
