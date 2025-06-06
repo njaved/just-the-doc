@@ -63,7 +63,7 @@ Tools to Install
 
 ### Prepare the Directory
 {: .no_toc }
-```js
+```bash
 mkdir -p ~/nbs-setup/terraform/aws/nbs7-mySTLT-test
 cd ~/nbs-setup/terraform/aws/nbs7-mySTLT-test
 ```
@@ -71,11 +71,11 @@ cd ~/nbs-setup/terraform/aws/nbs7-mySTLT-test
 ### Download Terraform Configuration
 {: .no_toc }
 Clone the infrastructure repo:
-```js
+```bash
 git clone https://github.com/CDCgov/NEDSS-Infrastructure.git
 ```
 Copy standard template:
-```js
+```bash
 cp -pr terraform/aws/samples/NBS7_standard terraform/aws/nbs7-mySTLT-test
 ```
 
@@ -97,8 +97,8 @@ terraform apply
 {: .no_toc }
 - Confirm VPC, EKS cluster, subnets, and node groups are created.
 - Verify EKS cluster authentication and running pods & nodes:
-```js
-aws eks --region us-east-1 update-kubeconfig --name <clustername> # e.g. cdc-nbs-sandbox
+```bash
+aws eks --region us-east-1 update-kubeconfig --name <clustername> e.g. cdc-nbs-sandbox
 kubectl get pods --namespace=cert-manager
 kubectl get nodes
 ```
@@ -106,7 +106,7 @@ kubectl get nodes
 ## Deploy Core Kubernetes Services - Helm
 ### Install NGINX Ingress
 {: .no_toc }
-```js
+```bash
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm install ingress-nginx ingress-nginx/ingress-nginx
 kubectl --namespace ingress-nginx get services -o wide -w ingress-nginx-controller
@@ -116,38 +116,38 @@ kubectl get pods -n=ingress-nginx
 ### Create DNS Entries in Route53
 {: .no_toc }
 - Modernized NBS application pointed to the new network load balancer in front of your Kubernetes cluster
-```js
+```bash
 app.<site_name>.<domain>.com
 ```
 - Data Services pointed to the new network load balancer in front of your Kubernetes cluster
-```js
+```bash
 data.<site_name>.<domain>.com
 ```
 
 ### Install Cert Manager (Optional)
 {: .no_toc }
-```js
+```bash
 helm repo add jetstack https://charts.jetstack.io
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true
 ```
 
 ### Install and Verify LinkerD (Optional)
 {: .no_toc }
-```js
+```bash
 kubectl annotate namespace default "linkerd.io/inject=enabled"
 kubectl get namespace default -o=jsonpath='{.metadata.annotations}'
 ```
 
 ### Install Cluster Autoscaler (Optional)
 {: .no_toc }
-```js
+```bash
 helm repo add autoscaler https://kubernetes.github.io/autoscaler
 helm install cluster-autoscaler autoscaler/cluster-autoscaler -n kube-system
 ```
 
 ### Verify Services are Running
 {: .no_toc }
-```js
+```bash
 kubectl get pods -A
 ```
 
