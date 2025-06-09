@@ -58,8 +58,8 @@ Tools to Install
 - Access to NBS 6 databases (SQL Server)
 - S3 bucket for Terraform state
 
-## Set Up AWS Infrastructure - Terraform <br><br>
-
+## Set Up AWS Infrastructure - Terraform
+ <br><br>
 ![NBS7_Infrastructure](/just-the-doc/docs/quick_install_nbs7_architecture.png)
 
 ### Prepare the Directory
