@@ -59,6 +59,7 @@ Tools to Install
 - S3 bucket for Terraform state
 
 ## Set Up AWS Infrastructure - Terraform
+
 ![NBS7_Infrastructure](/just-the-doc/docs/quick_install_nbs7_architecture.png)
 
 ### Prepare the Directory
