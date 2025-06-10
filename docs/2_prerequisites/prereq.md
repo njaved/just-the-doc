@@ -95,8 +95,7 @@ You will also need a local or cloud hosted workstation (e.g. CloudShell) with th
 NBS 7 system. The following tools should be installed on a local or cloud-based management machine to support this work:
 
 - **AWS CLI**: Download and installation instructions can be found [here](https://aws.amazon.com/cli/)
-
-- Instructions for getting and using AWS credentials for use with the CLI can be found [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+  - Instructions for getting and using AWS credentials for use with the CLI can be found [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 
 - **GitHub CLI**: Download and installation instructions are here:  
   [https://cli.github.com/](https://cli.github.com/)
