@@ -80,9 +80,9 @@ The Data Sync service provides a secure API to connect to the databases in the N
 - We also leverage Keycloak for token management and SSO integration, for example, OAuth, SAML integration with Okta, etc.
 
 ### AWS Managed Services
-- AWS Elastic Kubernetes Service (EKS): Terraform scripts will set up the instance of EKS that NBS 7 will use. This managed service handles all lifecycle events for the k8s runtime (e.g. keeping the underlying nodes patched and up to date).
-- AWS Elastic File System (EFS): The NBS 7 system uses a network filesystem for persistent data storage.
-- AWS Managed Prometheus (AMP): NBS will harness AWS-managed Prometheus to capture metrics from Kubernetes ingress and various microservices.
-- AWS Managed Grafana (AMG): NBS will leverage AWS Managed Grafana to visualize metrics from AMP and host operational dashboards. The initial set includes three dashboards, encompassing error rates, total request volume, and latency.
-- AWS Key Management Store (KMS): AWS infrastructure storage services like AWS EKS, EFS, and RDS utilize a managed key management store for persistence and encryption, ensuring a robust layer of security.
-- AWS Relational Database Service (RDS): Optionally, the database underlying the NBS 6 and 7 system may be configured to run as a fully managed MS SQL Service database instance.
+- **AWS Elastic Kubernetes Service (EKS)**: Terraform scripts will set up the instance of EKS that NBS 7 will use. This managed service handles all lifecycle events for the k8s runtime (e.g., keeping the underlying nodes patched and up to date).
+- **AWS Elastic File System (EFS)**: The NBS 7 system uses a network filesystem for persistent data storage.
+- **AWS Managed Prometheus (AMP)**: NBS will harness AWS-managed Prometheus to capture metrics from Kubernetes ingress and various microservices.
+- **AWS Managed Grafana (AMG)**: NBS will leverage AWS Managed Grafana to visualize metrics from AMP and host operational dashboards. The initial set includes three dashboards, encompassing error rates, total request volume, and latency.
+- **AWS Key Management Store (KMS)**: AWS infrastructure storage services like AWS EKS, EFS, and RDS utilize a managed key management store for persistence and encryption, ensuring a robust layer of security.
+- **AWS Relational Database Service (RDS)**: Optionally, the database underlying the NBS 6 and 7 system may be configured to run as a fully managed MS SQL Service database instance.
