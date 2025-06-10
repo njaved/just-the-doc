@@ -16,7 +16,7 @@ nav_order: 1
 
 ---
 
-The deployment of Modern NBS 7 will complement and build upon the existing NBS 6.0.15 (or newer version) system, integrating them seamlessly through the strangler fig pattern. Users will experience a smooth transition between the modern NBS features and legacy NBS.
+The deployment of Modern NBS 7 will complement and build upon the existing NBS 6.0.16 (or newer version) system, integrating them seamlessly through the strangler fig pattern. Users will experience a smooth transition between the modern NBS features and legacy NBS.
 
 The Modern NBS will be hosted on a separate Virtual Private Cloud (VPC) to prevent any disruptions to the existing Classic NBS. These two VPCs will be interconnected to facilitate RDS access and other communication requirements.
 
@@ -25,16 +25,16 @@ The architecture diagram below illustrates the key components of the Modernized 
 ![Infrastructure](/just-the-doc/docs/1_introduction/nbs7_architecture_and_microservices.png)
 
 ### Infrastructure as Code (IaC)
-The cloud environment for hosting NBS 7 is set up and configured using an infrastructure as code approach. Terraform code is used to provision and manage the cloud hosting environment, and Helm is used to manage workloads in the Kubernetes cluster. This code will be distributed from GitHub.
+The cloud environment for hosting NBS 7 is set up and configured using an [infrastructure as code](https://example.com) approach. Terraform code is used to provision and manage the cloud hosting environment, and Helm is used to manage workloads in the Kubernetes cluster. This code will be distributed from GitHub.
 - The Terraform modules provided will establish the NBS infrastructure within a dedicated VPC. This includes deploying AWS EKS, nodes, EBS storage, and provisioning EFS for persistent storage.
 - Terraform will also handle the creation of essential networking resources, such as private/public subnets, NAT gateways, Internet Gateways, and VPC peering.
 - Additionally, Terraform will automate the setup of Helm charts, including Fluent Bit and Cert Manager, and configure AWS-managed services such as AMP and AMG.
 
 ### NBS Microservices
-NBS 7 introduces microservices for the modernized system, deployed using Helm charts.
-- Modernization API Service: This service incorporates essential modern NBS features such as patient search, event search, patient profile, investigations, etc.
-- NBS-gateway Service: Leveraging Spring Cloud Gateway, this service efficiently manages intricate strangler routing logic between modern and legacy NBS.
-- Data Ingestion API Service: Our dedicated service provides essential APIs that enable NBS to seamlessly ingest HL7 data from labs and other entities into the NBS system.
+NBS 7 introduces microservices for the modernized system, deployed using Helm charts:
+- **Modernization API Service**: This service incorporates essential modern NBS features such as patient search, event search, patient profile, investigations, etc.
+- **NBS-gateway Service**: Leveraging Spring Cloud Gateway, this service efficiently manages intricate strangler routing logic between modern and legacy NBS.
+- **Data Ingestion API Service**: Our dedicated service provides essential APIs that enable NBS to seamlessly ingest HL7 data from labs and other entities into the NBS system.
 
 ###  NGINX Ingress 
 Serving as the entry point into the Kubernetes cluster, NGINX Ingress will intelligently route users based on predefined routing rules. Users will be directed to the modernized NBS 7 features (Modernization API Service) or classic NBS 6 features (NBS-gateway Service). The deployment of NGINX Ingress will be orchestrated using Helm charts and values files.
