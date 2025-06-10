@@ -40,10 +40,10 @@ NBS 7 introduces microservices for the modernized system, deployed using Helm ch
 Serving as the entry point into the Kubernetes cluster, NGINX Ingress will intelligently route users based on predefined routing rules. Users will be directed to the modernized NBS 7 features (Modernization API Service) or classic NBS 6 features (NBS-gateway Service). The deployment of NGINX Ingress will be orchestrated using Helm charts and values files.
 
 ### Shared Services Tools and Containers
-- Cert Manager: This tool automates TLS certificate management and will be integrated into the infrastructure via Terraform. The certificate issuer connects to Let's Encrypt CA by default, and will be installed using yaml manifests and kubectl commands.
-- Apache NiFi: As an ETL tool, Apache NiFi populates Elasticsearch indices from the NBS database. Deployment of NiFi will follow Helm charts and values files.
-- Elasticsearch: NBS relies on Elasticsearch for lightning-fast searches. The deployment of Elasticsearch will use Helm chart and values files.
-- Fluent Bit: Fluent Bit serves as the log aggregator, collecting logs from various microservices and Kubernetes components and, by default, pushing them to designated S3 buckets and CloudWatch.
+- **Cert Manager**: This tool automates TLS certificate management and will be integrated into the infrastructure via Terraform. The certificate issuer connects to Let's Encrypt CA by default, and will be installed using YAML manifests and `kubectl` commands.
+- **Apache NiFi**: As an ETL tool, Apache NiFi populates Elasticsearch indices from the NBS database. Deployment of NiFi will follow Helm charts and values files.
+- **Elasticsearch**: NBS relies on Elasticsearch for lightning-fast searches. The deployment of Elasticsearch will use Helm chart and values files.
+- **Fluent Bit**: Fluent Bit serves as the log aggregator, collecting logs from various microservices and Kubernetes components and, by default, pushing them to designated S3 buckets and CloudWatch.
 
 ### Data Ingestion Service
 Provides necessary foundational pieces to track and route ELR data flowing into NBS, and lays the groundwork to provide additional ingestion options for NBS.
@@ -52,10 +52,28 @@ Provides necessary foundational pieces to track and route ELR data flowing into 
 - Verifies all input data (HL7) against standard rules and provides an error when rejected
 - Supports both positive and negative lab results with the appropriate code
 - Provides both syntactic and semantic validations
-- Remove unwanted data such as extraneous logs using filters
+- Removes unwanted data such as extraneous logs using filters
 - Provides duplication checks to see if the data has made it through the system before
 - Includes error handling and logging for both business data and operation data for situational awareness
 - Supports traffic and system health monitoring
+
+### RTR Microservices
+There are 9 RTR services:
+- **Liquibase job**: Database version control management that deploys stored procedures, tables and views required for RTR pipeline.
+- **Person service**: Processes Patient and Provider change events.
+- **Observation services**: Processes Observation change events.
+- **Organization service**: Processes Organization change events.
+- **LDF service**: Processes LDF or State-defined field data change events.
+- **Investigation service**: Processes Public_health_case change events. This service also provides information for page builder investigation, notifications, confirmation method and updates the PublicHealthCaseFact_Modern datamart.
+- **Post-processing service**: Calls the post-processing stored procedures to hydrate dimensions, fact tables, and datamarts.
+- **Debezium service**: Monitors and streams the selected list of NBS_ODSE and NBS_SRTE tables to Kafka topics.
+- **Kafka sink service**: Persists the data from the Kafka topics to the RDB_Modern database tables.
+
+### Data Processing Service
+Provides a seamless way to process ELR in near real-time instead of depending on the system-bounded ELR batch job. This eliminates the need for the STLT to set up a batch job on their system.
+
+### NND Service
+The Data Sync service provides a secure API to connect to the databases in the NBS cloud, with an API endpoint service and without interrupting any operations On-Prem at Jurisdictions.
 
 ### Keycloak
 - At our core, we rely on Keycloak as our primary Identity Provider (IDP) and Data Ingestion APIs.
