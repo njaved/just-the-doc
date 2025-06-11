@@ -102,13 +102,9 @@ $ aws sts get-caller-identity
         ```
         Note: You should see a line 'Added new context ….“.
         iii. If the above command errors out, check
-
             1. there are no issues with the AWS CLI installation
-
             2. you have set the correct AWS environment variables
-
             3. you are using the correct cluster name (as per the EKS management console)
-
     b. Run the following command to check if you are able to run commands to interact with the Kubernetes objects and the cluster.
         ```
         kubectl get pods --namespace=cert-manager
