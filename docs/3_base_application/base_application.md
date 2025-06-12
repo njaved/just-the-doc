@@ -94,10 +94,22 @@ $ aws sts get-caller-identity
 10. Verify the [newly created VPC and subnets](https://us-east-1.console.aws.amazon.com/vpc/home?region=us-east-1#Home:) were created as expected and confirm that the CIDR blocks you defined exist in the Route Tables
 11. Verify the [EKS Kubernetes cluster](https://us-east-1.console.aws.amazon.com/eks/home?region=us-east-1#/clusters) was created by selecting the cluster and inspecting Resources->Pods, Compute (expect 30+ pods at this point, and 3-5 compute nodes as per the min/max nodes defined in terraform/aws/app-infrastructure/eks-nbs/variables.tf)
 12. Now that the infrastructure has been created using terraform, deploy Kubernetes (K8s) support services in the Kubernetes cluster via the following steps
-- Start the Terminal/command line:
-      i. Make sure you are still authenticated with AWS (reference the following [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)).
-      ii. Authenticate into the Kubernetes cluster (EKS) using the following command and the [cluster name you deployed in the environment](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
+- a. Start the Terminal/command line:
+    - i. Make sure you are still authenticated with AWS (reference the following [Configuration and credential file settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)).
+    - ii. Authenticate into the Kubernetes cluster (EKS) using the following command and the [cluster name you deployed in the environment](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html)
    ```bash
    aws eks --region us-east-1 update-kubeconfig --name <clustername> # e.g. cdc-nbs-sandbox
    ```
+   - iii. If the above command errors out, check
+       - 1. there are no issues with the AWS CLI installation
+       - 2. you have set the correct AWS environment variables
+       - 3. you are using the correct cluster name (as per the EKS management console)
+- b. Run the following command to check if you are able to run commands to interact with the Kubernetes objects and the cluster.
+  ```bash
+  kubectl get pods --namespace=cert-manager
+  ```
+  The above command should return 3 pods.  If it doesn’t refresh the AWS credentials and repeat steps in 12 a.
+  ```bash
+  kubectl get nodes
+  ```
 13. Congratulations! You have installed your core infrastructure and Kubernetes cluster! Next, we will configure your cluster using helm charts.
