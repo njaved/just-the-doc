@@ -33,7 +33,7 @@ This guide is NOT meant for a production deployment. Please review [System Admin
 - S3 Bucket
 
 #### Manual
-- Route53 Updates
+- Route53 Updates: Need to create dns entries in route53 to point app and data urls to network load balancer
 
 #### NBS7 Core Services
 1. **Elasticsearch** - For lightning-fast searches.
@@ -45,17 +45,19 @@ This guide is NOT meant for a production deployment. Please review [System Admin
 
 ## Prerequisites
 Tools to Install
-- AWS CLI (v2.15+)
-- Terraform (v1.5.5)
-- Helm (v3.12+)
-- kubectl (v1.27+)
-- eksctl (optional but recommended)
+- [AWS CLI](https://aws.amazon.com/cli/) (v2.15+)
+- [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) (v1.5.5)
+- [Helm](https://helm.sh/docs/intro/install/) (v3.12+)
+- [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) (v1.27+)
+- [eksctl](https://eksctl.io/installation/) (optional but recommended)
+- Domain info for modernized nbs application (e.g app.<site_name>.<domain>.com)
+- Access to nbs6 database to run scripts
 
 ## Environment Requirements
-- AWS Account with NBS 6.0.15 access (or newer)
+- AWS Account with NBS 6.0.16 access (or newer)
 - DNS routing infrastructure
 - IAM Roles for Terraform and Kubernetes
-- Access to NBS 6 databases (SQL Server)
+- Access to NBS 6 (sql server) databases
 - S3 bucket for Terraform state
 
 ## Set Up AWS Infrastructure - Terraform
