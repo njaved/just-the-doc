@@ -50,7 +50,7 @@ Tools to Install
 - [Helm](https://helm.sh/docs/intro/install/) (v3.12+)
 - [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) (v1.27+)
 - [eksctl](https://eksctl.io/installation/) (optional but recommended)
-- Domain info for modernized nbs application (e.g app.<site_name>.<domain>.com)
+- Domain info for modernized nbs application (e.g app.site_name.domain.com)
 - Access to nbs6 database to run scripts
 
 ## Environment Requirements
