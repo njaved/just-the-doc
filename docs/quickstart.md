@@ -50,14 +50,12 @@ Tools to Install
 - [Helm](https://helm.sh/docs/intro/install/) (v3.12+)
 - [kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) (v1.27+)
 - [eksctl](https://eksctl.io/installation/) (optional but recommended)
-- Domain info for modernized nbs application (e.g app.site_name.domain.com)
-- Access to nbs6 database to run scripts
 
 ## Environment Requirements
 - AWS Account with NBS 6.0.16 access (or newer)
-- DNS routing infrastructure
+- DNS routing infrastructure: Domain info for modernized nbs application (e.g app.site_name.domain.com)
 - IAM Roles for Terraform and Kubernetes
-- Access to NBS 6 (sql server) databases
+- Access to NBS 6 (sql server) databases to run scripts
 - S3 bucket for Terraform state
 
 ## Set Up AWS Infrastructure - Terraform
