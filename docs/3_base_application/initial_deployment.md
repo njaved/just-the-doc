@@ -44,6 +44,8 @@ nav_enabled: true
   - Data Services -
   - NIFI application - Eg: nifi.example.com [Note: NIFI has reported vulnerabiltiies. Please expose only if you absolutely need it and want to adminsiter it. Otherwise, dont add NIFI].
     These are the 5 required URL’s for NBS
+    {: .no_toc }
+    
     | **Parameter**                           | **Template Value**                                  | **Example**                          |
     |----------------------------------------|-----------------------------------------------------|--------------------------------------|
     | nbs domain                             | site_name.example_domain.com                        | fts3.nbspreview.com                  |
