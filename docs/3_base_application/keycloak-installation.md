@@ -87,13 +87,18 @@ There is a Keycloak helm chart
 - p. Upload <helm extract directory>/charts/keycloak/extra/05-nbs-users-nnd-client.json which is part of the helm zip file in the keycloak chart and click on Create (this will import the nnd service client, (note this file was named incorrectly it should be loaded into the NBS realm as shown in the steps)
 - q. Retrieving the Client’s secret ( the imported configuration will seed a random client secret )
     - a. Navigate to NBS Realm on the left menu
-
-Click on Clients
-
-Select nnd-keycloak-client
-
-Select Credentials tab
-
-Click on the “eye” and copy the secret into buffer
-
-Store the Client secret for use by the applications. (e.g. in AWS store in Secrets Manager keycloak/client/secret/nnd)    
+    - b. Click on Clients
+    - c. Select nnd-keycloak-client
+    - d. Select Credentials tab
+    - e. Click on the “eye” and copy the secret into buffer
+    - f. Store the Client secret for use by the applications. (e.g. in AWS store in Secrets Manager keycloak/client/secret/nnd)
+- r. Create new client for SRTE. Repeat steps as shown above to import SRTE client.
+    - a. Under Realm settings, click on “Action” drop down on top right and click on “Partial Import”.
+    - b. Upload <helm extract directory>/charts/keycloak/extra/05-nbs-users-srte-data-client.json which is part of the helm zip file in the keycloak chart and click on Create.
+    - c. Retrieving the Client’s secret (the imported configuration will seed a random client secret)
+         - Navigate to NBS Realm on the left menu
+         - Click on Clients
+         - Select srte-data-keycloak-client
+         - Select Credentials tab
+         - Click on the “eye” and copy the secret
+         - Store the Client secret for use by the applications. (e.g. in AWS store in Secrets Manager keycloak/client/secret/nnd) 
