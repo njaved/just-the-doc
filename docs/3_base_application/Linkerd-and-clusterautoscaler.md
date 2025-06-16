@@ -1,5 +1,5 @@
 ---
-title: Linkerd
+title: Linkerd and Cluster Autoscaler
 layout: page
 parent: AWS Infrastructure
 nav_order: 4
@@ -23,3 +23,17 @@ nav_enabled: true
   ```
   Should show “{"linkerd.io/inject":"enabled"}”
 - c. If this is an update of the environment rather than a new install, restart the application pods in the default namespace for the linkerd sidecars to be injected into each pods. Should show 2/2 on the restarted pod.
+
+## Cluster Autoscaler Installation
+Cluster Autoscaler is a helm chart deployment that horizontally autoscales cluster nodes when deployed on the cluster. The following parameter values need to be modified on the values.yaml file. These values should be fetched from the AWS console.
+```bash
+clusterName: <EKS_CLUSTER_NAME>
+autoscalingGroups:
+  - name: <AUTOSCALING_GROUP_NAME>
+    maxSize: 5
+    minSize: 3
+awsRegion: us-east-1
+
+helm repo add autoscaler https://kubernetes.github.io/autoscaler
+helm upgrade --install cluster-autoscaler autoscaler/cluster-autoscaler -f ./cluster-autoscaler/values.yaml --namespace kube-system
+```
