@@ -15,7 +15,6 @@ nav_enabled: true
 ## NBS Microservices Deployment
 We will use HELM CLI to deploy NBS microservices into Kubernetes cluster. Please deploy the helm charts in the following order. Verify that each microservice has started successfully before moving on to the next service.
 - elasticsearch-efs
-- page-builder-api
 - modernization-api
 - nifi-efs
 - nbs-gateway
