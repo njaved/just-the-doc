@@ -79,7 +79,7 @@ There is a Keycloak helm chart
   ![keycloak-ui-2-login](/just-the-doc/docs/3_base_application/images/keycloak-ui-2.png)
 - j. Create a new Realm (to contain the NBS specific client and user/group configurations)
   ![nbs-create-new-realm](/just-the-doc/docs/3_base_application/images/create-new-realm.png)
-- k. Upload <helm extract directory>/charts/keycloak/extra/01-NBS-realm-with-DI-client.json which is part of the helm zip file in the keycloak chart and click on Create (this will import the NBS Realm and Clients)
+- k. Upload {helm extract directory}/charts/keycloak/extra/01-NBS-realm-with-DI-client.json which is part of the helm zip file in the keycloak chart and click on Create (this will import the NBS Realm and Clients)
   ![nbs-realm-di-client](/just-the-doc/docs/3_base_application/images/nbs-realm-di-client.png)
   ![nbs-realm-di-client-2](/just-the-doc/docs/3_base_application/images/nbs-realm-di-client-2.png)
 - l. Realm and Clients are created successfully
