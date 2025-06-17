@@ -40,7 +40,7 @@ There is a Keycloak helm chart
     **Validation step: KeyCloak database is created**
   ![keycloak-database-creation](/just-the-doc/docs/3_base_application/images/keycloak-database-creation.png)
   
-- e. In <helm extract directory>/charts/keycloak/values.yml, update the following parameters
+- e. In {helm extract directory}/charts/keycloak/values.yml, update the following parameters
   | **Parameter**        | **Template Value**            | **Example/Description**                                                                                                                                          |
   |----------------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
   | adminUser            | admin                         | This is the Keycloak Admin account for use in the Web UI, keep template value or change to match organizational naming conventions                              |
