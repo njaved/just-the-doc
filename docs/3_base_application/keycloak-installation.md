@@ -41,15 +41,15 @@ There is a Keycloak helm chart
   ![keycloak-database-creation](/just-the-doc/docs/3_base_application/images/keycloak-database-creation.png)
   
 - e. In {helm extract directory}/charts/keycloak/values.yml, update the following parameters
-  | **Parameter**        | **Template Value**            | **Example/Description**                        |
-  |----------------------|-------------------------------|------------------------------------------------|
-  | adminUser            | admin                         | This is the Keycloak Admin account for use in the Web UI, keep template value or change to match organizational naming conventions |
-  | adminPassword        | EXAMPLE_KC_PASS8675309        | password123 - This is the password for the Keycloak admin user, use a complex password matching organizational standards.          |
-  | KC_DB                | mssql                         | mssql                                                                                                                              |
-  | KC_DB_URL            | jdbc:sqlserver://EXAMPLE_DB_ENDPOINT:1433;databaseName=keycloak;encrypt=true;trustServerCertificate=true; | jdbc:sqlserver://mydbendpoint:1433;databaseName=keycloak;encrypt=true;trustServerCertificate=true;              |
-  | KC_DB_USERNAME       | NBS_keycloak                  | This is the Keycloak database account that the applications use to access the database, keep template value or change to match organizational naming conventions |
-  | KC_DB_PASSWORD       | EXAMPLE_KCDB_PASS8675309      | Make sure it matches sql db from Step 4                                                                                            |
-  | efsFileSystemId      | EXAMPLE_EFS_ID                | EFS ID - This filesystem provides persistent storage to the container for themes etc, EFS file system id is available from the AWS console or the aws cli   |
+| **Parameter**        | **Template Value**            | **Example/Description**                        |
+|----------------------|-------------------------------|------------------------------------------------|
+| adminUser            | admin                         | This is the Keycloak Admin account for use in the Web UI, keep template value or change to match organizational naming conventions |
+| adminPassword        | EXAMPLE_KC_PASS8675309        | password123 - This is the password for the Keycloak admin user, use a complex password matching organizational standards.          |
+| KC_DB                | mssql                         | mssql                                                                                                                              |
+| KC_DB_URL            | jdbc:sqlserver://EXAMPLE_DB_ENDPOINT:1433;databaseName=keycloak;encrypt=true;trustServerCertificate=true; | jdbc:sqlserver://mydbendpoint:1433;databaseName=keycloak;encrypt=true;trustServerCertificate=true;              |
+| KC_DB_USERNAME       | NBS_keycloak                  | This is the Keycloak database account that the applications use to access the database, keep template value or change to match organizational naming conventions |
+| KC_DB_PASSWORD       | EXAMPLE_KCDB_PASS8675309      | Make sure it matches sql db from Step 4                                                                                            |
+| efsFileSystemId      | EXAMPLE_EFS_ID                | EFS ID - This filesystem provides persistent storage to the container for themes etc, EFS file system id is available from the AWS console or the aws cli   |
 
 - f. Deploy KeyCloak helm chart
   - a. Make sure you are authenticated to the EKS Cluster, if not use the below command
