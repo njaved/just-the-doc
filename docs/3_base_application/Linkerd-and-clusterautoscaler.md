@@ -17,6 +17,7 @@ nav_enabled: true
   ```bash
   kubectl annotate namespace default "linkerd.io/inject=enabled"
   ```
+  ![linkerd](/just-the-doc/docs/3_base_application/images/linkerd.png)
 - b. Verify annotation is in place:
   ```bash
   kubectl get namespace default -o=jsonpath='{.metadata.annotations}'
