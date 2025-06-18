@@ -24,11 +24,11 @@ nav_enabled: true
    image:
       repository: "quay.io/us-cdcgov/cdc-nbs-modernization/elasticsearch"
       tag: <release-version-tag> e.g v1.0.1
-  ```
+   ```
   After updating the values file, Run the following command from the charts directory to install Elasticsearch.
-  ```bash
-  helm install elasticsearch -f ./elasticsearch-efs/values.yaml elasticsearch-efs
-  ```
+   ```bash
+   helm install elasticsearch -f ./elasticsearch-efs/values.yaml elasticsearch-efs
+   ```
 4. IMPORTANT: Confirm the pod is running before proceeding with the next deployment using the below command. If the pod is still creating (or in any other state other than running), wait and/or troubleshoot.
    ```bash
    kubectl get pods
