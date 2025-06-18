@@ -2,7 +2,7 @@
 title: Data Ingestion
 layout: page
 parent: Microservices Deployment
-nav_order: 5
+nav_order: 6
 nav_enabled: true
 ---
 
