@@ -17,18 +17,18 @@ nav_enabled: true
 1. The helm chart for nbs-gateway should be available under charts/nbs-gateway.
 2. In the values.yaml, replace all occurrences of app.EXAMPLE_DOMAIN with the URL of your modern app and app-classic.EXAMPLE_DOMAIN with the URL of your existing NBS 6 as shown in the Table-3. 
 3. Ensure the image repository and tags are populated with the following:
-   ```bash
+   ```yaml
    image:
      repository: "quay.io/us-cdcgov/cdc-nbs-modernization/nbs-gateway"
      tag: <release-version-tag> e.g v1.0.1
    ```
 4. Verify page-builder is disabled
-   ```bash
+   ```yaml
    pageBuilder:
      enabled: "false"
    ```
 5. Make sure OIDC is enabled for keycloak login authentication and update the client secret (need the value from keycloak - refer Enable Keycloak Auth step (8))
-   ```bash
+   ```yaml
    Oidc:
      enabled: "true"
      client:
