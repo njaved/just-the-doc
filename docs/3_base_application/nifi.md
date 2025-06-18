@@ -18,14 +18,14 @@ nav_enabled: true
 2. The helm chart for nifi should be available under charts/nifi-efs.
 3. In the values.yaml file, replace all occurrences of nifi.EXAMPLE_DOMAIN with your domain name as shown in Table-3.
 4. Ensure the image repository and tags are populated with the following:
-  ```bash
+  ```yaml
   image:
     repository: "quay.io/us-cdcgov/cdc-nbs-modernization/nifi"
     tag: <release-version-tag> e.g v1.0.1
   ```
 5. Update the efsFileSystemId with the [efs-id](https://us-east-1.console.aws.amazon.com/efs/home?region=us-east-1#/file-systems).
 6. Populate jdbc connection string with the same information (refer Table - 5) as before which includes the username and password.
-  ```bash
+  ```yaml
   jdbcConnectionString: "jdbc:sqlserver://EXAMPLE_DB_ENDPOINT:1433;databaseName=NBS_ODSE;user=DBUser;password=DBpassword;encrypt=true;trustServerCertificate=true;"
   ```
 7. Populate singleUserCredentialsUsername to change the default of “admin“ username
