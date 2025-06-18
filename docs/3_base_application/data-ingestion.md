@@ -91,7 +91,7 @@ Data Ingest DB creation and user permission in the following should be executed 
       cluster: "b-1.xxxxxxxxxxxxxx.amazonaws.com:9092"
    ```
 7. Update the values.yaml to populate efsFileSystemId which is the EFS file system id from the AWS console. See image below.
-   ![data-ingestion-efs](/just-the-doc/docs/3_base_application/images/data-ingestion-efs)
+   ![data-ingestion-efs](/just-the-doc/docs/3_base_application/images/data-ingestion-efs.png)
    ```yaml
    efsFileSystemId: "EXAMPLE_EFS_ID"
    ```
