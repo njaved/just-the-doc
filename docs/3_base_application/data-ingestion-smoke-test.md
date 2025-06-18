@@ -25,7 +25,7 @@ As the **Client Credentials Grant type flow** is used for authentication in the 
 2. Installation of Postman application to test the end to end flow.
    - If you already have postman application in your system, skip this step.
    - Visit the official Postman website at [www.postman.com](https://www.postman.com) and navigate to the **Downloads** section  
-     [![Download Postman](https://www.postman.com/downloads/)](https://www.postman.com/downloads/) [Get Started for Free](https://www.postman.com/downloads/)
+     [[Download Postman](https://www.postman.com/downloads/)](https://www.postman.com/downloads/) [Get Started for Free](https://www.postman.com/downloads/)
    - Click on the link to download the version appropriate for your OS. Once the download is complete open and install it accordingly.
 
 ### Scope
