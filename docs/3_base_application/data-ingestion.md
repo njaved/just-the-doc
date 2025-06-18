@@ -22,7 +22,7 @@ NBS_DataIngest is a new database essential for ingesting, validating Electronic 
 ### Manual Sql script for DI
 Data Ingest DB creation and user permission in the following should be executed prior to the deployment of the data ingestion
 1. create-nbs-dataingest-db.sql
-   ```bash
+   ```sql
    IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'NBS_DataIngest')
    BEGIN
        CREATE DATABASE NBS_DataIngest
@@ -32,7 +32,7 @@ Data Ingest DB creation and user permission in the following should be executed 
    GO
    ```
 2. Run the following script to create required permissions for nbs_ods user to NBS_DataIngest database:
-   ```bash
+   ```sql
    USE [NBS_DataIngest]
    GO
    CREATE USER [nbs_ods] FOR LOGIN [nbs_ods]
@@ -112,7 +112,7 @@ Data Ingest DB creation and user permission in the following should be executed 
 For more information about sFTP support, please see: [data-ingestion-sftp-support](https://cdc-nbs.atlassian.net/wiki/spaces/NM/pages/1592755309)
 10. Deploy DataIngestion helm chart:
 After updating the values file, Run the following command to install dataingestion-service.
-   ```yaml
+   ```bash
    helm install dataingestion-service -f ./dataingestion-service/values.yaml dataingestion-service
    ```
    - Note: Check to see if the pod for dataingestion-service is running using kubectl get pods
