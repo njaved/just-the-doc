@@ -29,4 +29,4 @@ Set up cluster issuer for LetsEncrypt production certificate issuer:
    kubectl get clusterissuer
    ```
    You should see a letsencrypt-production true message as shown below
-   ![lets-encrypt](/just-the-doc/docs/3_base_application/images/lets-encrypt.png)
+   ![lets-encrypt](/just-the-doc/docs/4_initial_kubernetes_deployment/images/2_lets-encrypt.png)
