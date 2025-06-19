@@ -1,7 +1,7 @@
 ---
 title: Microservices Deployment
 layout: page
-nav_order: 6
+nav_order: 7
 nav_enabled: true
 ---
 
