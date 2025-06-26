@@ -42,7 +42,7 @@ data processing service Application - e.g. dataprocessingservice.example.com
     ```
   - ```sql
       SELECT * FROM [NBS_ODSE].[dbo].[Auth_user]
-      ```
+    ```
 5. Update the values file with the jdbc connection values in the following format:
   - The dbserver value is just a database server endpoint. Please don't include the port number
  
@@ -66,6 +66,7 @@ data processing service Application - e.g. dataprocessingservice.example.com
         clientId: "EXAMPLE_SRTE_CLIENT_ID"
         clientSecret: "EXAMPLE_SRTE_CLIENT_SECRET"
     ```
+
 6. Data processing service helm chart:
    After updating the values file, Run the following command to install data-processing-service.
     ```bash
