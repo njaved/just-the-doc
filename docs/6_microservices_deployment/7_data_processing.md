@@ -54,18 +54,16 @@ data processing service Application - e.g. dataprocessingservice.example.com
       dbserver: "cdc-nbs-xxxxxxxxxxxx.us-east-1.rds.amazonaws.com"
       username: "DBUsername"
       password: "DBPassword"
-      
     nbs:
       authuser: "EXAMPLE_NBS_AUTHUSER"
-    
     kafka:
       cluster: "EXAMPLE_MSK_KAFKA_ENDPOINT"
-      
     keycloak:
       srte:
         clientId: "EXAMPLE_SRTE_CLIENT_ID"
         clientSecret: "EXAMPLE_SRTE_CLIENT_SECRET"
     ```
+
 6. Data processing service helm chart:
    After updating the values file, Run the following command to install data-processing-service.
     ```bash
