@@ -67,13 +67,11 @@ data processing service Application - e.g. dataprocessingservice.example.com
         clientId: "EXAMPLE_SRTE_CLIENT_ID"
         clientSecret: "EXAMPLE_SRTE_CLIENT_SECRET"
     ```
-
 6. Data processing service helm chart:
    After updating the values file, Run the following command to install data-processing-service.
     ```bash
     helm install data-processing-service -f ./data-processing-service/values.yaml data-processing-service
     ```
     - Note: Check to see if the pod for data-processing-service is running using kubectl get pods
-
 7. API Testing Guide: [RTI API Testing and Integration](https://cdc-nbs.atlassian.net/wiki/spaces/NM/pages/1592754353/NBS+7.10+Application+Installation+Guide#RTI-API-Testing-and-Integration)
    
