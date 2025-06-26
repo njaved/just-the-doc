@@ -49,7 +49,6 @@ data processing service Application - e.g. dataprocessingservice.example.com
     ![data-processing-dbendpoint](/just-the-doc/docs/6_microservices_deployment/images/data-processing-dbendpoint.png)
 
   - Note: Please ignore all the other values such as ingress, ingressHost, etc.
-
     ```yaml
     jdbc:
       dbserver: "cdc-nbs-xxxxxxxxxxxx.us-east-1.rds.amazonaws.com"
@@ -74,4 +73,3 @@ data processing service Application - e.g. dataprocessingservice.example.com
     ```
     - Note: Check to see if the pod for data-processing-service is running using kubectl get pods
 7. API Testing Guide: [RTI API Testing and Integration](https://cdc-nbs.atlassian.net/wiki/spaces/NM/pages/1592754353/NBS+7.10+Application+Installation+Guide#RTI-API-Testing-and-Integration)
-   
