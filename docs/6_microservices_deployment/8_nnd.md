@@ -43,7 +43,7 @@ This guide sets out the detailed steps to install NBS 7 Data Sync service that w
      password: "DBPassword"
    ```
 5. Update the values.yaml to populate efsFileSystemId which is the EFS file system id from the AWS console. See image below.
-   ![nnd-efs](/just-the-doc/docs/6_microservices_deployment/images/nnd-efs.png)   
+   ![nnd-efs](/just-the-doc/docs/6_microservices_deployment/images/nnd-efsid.png)   
 
    ```yaml
    efsFileSystemId: "EXAMPLE_EFS_ID"
