@@ -44,11 +44,9 @@ data processing service Application - e.g. dataprocessingservice.example.com
       SELECT * FROM [NBS_ODSE].[dbo].[Auth_user]
     ```
 5. Update the values file with the jdbc connection values in the following format:
-  - The dbserver value is just a database server endpoint. Please don't include the port number
- 
-    ![data-processing-dbendpoint](/just-the-doc/docs/6_microservices_deployment/images/data-processing-dbendpoint.png)
-
-  - Note: Please ignore all the other values such as ingress, ingressHost, etc.
+   - The dbserver value is just a database server endpoint. Please don't include the port number
+   ![data-processing-dbendpoint](/just-the-doc/docs/6_microservices_deployment/images/data-processing-dbendpoint.png)
+   - Note: Please ignore all the other values such as ingress, ingressHost, etc.
     ```yaml
     jdbc:
       dbserver: "cdc-nbs-xxxxxxxxxxxx.us-east-1.rds.amazonaws.com"
