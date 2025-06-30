@@ -40,3 +40,5 @@ Click 'Send,' and the response should be below. Ensure the response code is 200 
 
 - Once you receive the Token, you can validate the actual API endpoint for the service using Swagger:
   - [https://<<HOST>>/data-sync/swagger-ui/index.html](https://<<HOST>>/data-sync/swagger-ui/index.html)
+
+> ℹ️ **We recommend Postman for endpoint validation although you can use Swagger**
