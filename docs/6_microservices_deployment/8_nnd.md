@@ -33,4 +33,27 @@ This guide sets out the detailed steps to install NBS 7 Data Sync service that w
      tag: <release-version-tag> e.g v1.0.1
    ```
 
-4. 
+4. Update the values file with the jdbc connection values in the following format. The dbserver value is just a database server endpoint. Please don't include the port number.
+   ![nnd-dbendpoint](/just-the-doc/docs/6_microservices_deployment/images/nnd-dbendpoint.png)
+   
+   ```yaml
+   jdbc:
+     dbserver: "cdc-nbs-xxxxxxxxxxxx.us-east-1.rds.amazonaws.com"
+     username: "DBUsername"
+     password: "DBPassword"
+   ```
+5. Update the values.yaml to populate efsFileSystemId which is the EFS file system id from the AWS console. See image below.
+   ![nnd-efs](/just-the-doc/docs/6_microservices_deployment/images/nnd-efs.png)   
+
+   ```yaml
+   efsFileSystemId: "EXAMPLE_EFS_ID"
+   ```
+6. Keycloak Auth URI. Provide keycloak auth uri in the values.yaml file as shown below. In the default configuration this value should not need to change unless the name or namespace of the keycloak pod is modified.
+   ```yaml
+   authUri: "http://keycloak.default.svc.cluster.local/auth/realms/NBS"
+   ```
+7. Run the following command to install nnd-service.
+   ```bash
+   helm install nnd-service -f ./nnd-service/values.yaml nnd-service
+   ```
+   - Note: Check to see if the pod for nnd-service is running using kubectl get pods
