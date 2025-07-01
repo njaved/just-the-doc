@@ -21,7 +21,7 @@ nav_enabled: true
 
   - **HL7 Parser**: [NEDSS-Helm/charts/dataingestion-service/templates/ingress.yaml at 10623c0d9788a6513bd51f4b6ed4eb0f79b30a2f · CDCgov/NEDSS-Helm](https://github.com/CDCgov/NEDSS-Helm/blob/10623c0d9788a6513bd51f4b6ed4eb0f79b30a2f/charts/dataingestion-service/templates/ingress.yaml)
 
- ### PHIMNS properties
+### PHIMNS Properties
 
 - For the services to be fully functional, the STLT need to provide CDC their PHIMS properties. This ensures the data in the `TransportQ_Out` table gets updated correctly when the data is being processed by the CDC Case Notification. These data can be pulled from the existing NND Rhapsody route’s Variable Manager on the STLT level.
 
