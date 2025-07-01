@@ -1,5 +1,5 @@
 ---
-title: Case Notification
+title: Case Notification Service
 layout: page
 parent: Case Notification
 nav_order: 5
