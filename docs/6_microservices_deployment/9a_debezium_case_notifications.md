@@ -45,7 +45,7 @@ nav_enabled: true
      repository: quay.io/debezium/connect
      tag: <release-version-tag> e.g v1.0.1
    ```
-6. Configurations for the following should be on hand to update the values.yaml file- NBS_ODSE hostname, username, password and kafka bootstrap server names. Replace all "EXAMPLE_MSK_KAFKA_ENDPOINT" with Kafka endpoints, Replace all "nbs-db.private-EXAMPLE_DOMAIN" with SQL server domain name, Replace all instances of "EXAMPLE_DB_USER" with SQL Server user name, Replace all instances of "EXAMPLE_DB_USER_PASSWORD" with SQL Server password
+6. Configurations for the following should be on hand to update the values.yaml file- NBS_ODSE hostname, username, password and kafka bootstrap server names.
    ```yaml
    properties:
     bootstrap_server: "EXAMPLE_MSK_KAFKA_ENDPOINT"
