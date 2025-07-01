@@ -59,10 +59,7 @@ nav_enabled: true
          "database.names": "nbs_odse",
          "database.server.name": "odse",
          "database.history.kafka.bootstrap.servers": "EXAMPLE_MSK_KAFKA_ENDPOINT",
-         "schema.history.internal.kafka.bootstrap.servers": "EXAMPLE_MSK_KAFKA_ENDPOINT"   
-   env:
-      - name: BOOTSTRAP_SERVERS
-         value: "EXAMPLE_MSK_KAFKA_ENDPOINT"
+         "schema.history.internal.kafka.bootstrap.servers": "EXAMPLE_MSK_KAFKA_ENDPOINT"
    ```
 8. Sample ArgoCd manifest:
    ```yaml
