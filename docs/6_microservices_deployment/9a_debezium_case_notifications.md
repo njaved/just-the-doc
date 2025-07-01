@@ -64,7 +64,7 @@ nav_enabled: true
          name: BOOTSTRAP_SERVERS
          value: "EXAMPLE_MSK_KAFKA_ENDPOINT"
    ```
-8. Sample ArgoCd manifest:
+7. Sample ArgoCd manifest:
    ```yaml
    apiVersion: argoproj.io/v1alpha1
    kind: Application
@@ -105,15 +105,15 @@ nav_enabled: true
       prune: true
       selfHeal: true
    ```
-9. Install pod
+8. Install pod
    ```bash
    helm install -f ./debezium-case-notifications/values.yaml debezium-case-notification-service-connect ./debezium-case-notifications/
    ```
-10. Verify if pod is running
+9. Verify if pod is running
     ```bash
     kubectl get pods
     ```
-11. Validate service
+10. Validate service
     - This is an internal service with no ingress.
     - If the service has any trouble connecting with the database, run this command to reset the ConfigMap.
     ```bash
