@@ -46,25 +46,8 @@ nav_enabled: true
      tag: <release-version-tag> e.g v1.0.1
    ```
 6. Configurations for the following should be on hand to update the values.yaml file- NBS_ODSE hostname, username, password and kafka bootstrap server names.
-   ```yaml
-   properties:
-      bootstrap_server: "EXAMPLE_MSK_KAFKA_ENDPOINT"
-   sqlserverconnector: 
-      "config": 
-         "database.hostname": "nbs-db.private-EXAMPLE_DOMAIN",
-         "database.port": "1433",
-         "database.user": "EXAMPLE_DB_USER",
-         "database.password": "EXAMPLE_DB_USER_PASSWORD",
-         "database.dbname": "nbs_odse",
-         "database.names": "nbs_odse",
-         "database.server.name": "odse",
-         "database.history.kafka.bootstrap.servers": "EXAMPLE_MSK_KAFKA_ENDPOINT",
-         "schema.history.internal.kafka.bootstrap.servers": "EXAMPLE_MSK_KAFKA_ENDPOINT"   
-   env:
-      - name: BOOTSTRAP_SERVERS
-        value: "EXAMPLE_MSK_KAFKA_ENDPOINT"
-   ```
-7. Sample ArgoCd manifest:
+   
+8. Sample ArgoCd manifest:
    ```yaml
    apiVersion: argoproj.io/v1alpha1
    kind: Application
@@ -105,15 +88,15 @@ nav_enabled: true
       prune: true
       selfHeal: true
    ```
-8. Install pod
+9. Install pod
    ```bash
    helm install -f ./debezium-case-notifications/values.yaml debezium-case-notification-service-connect ./debezium-case-notifications/
    ```
-9. Verify if pod is running
+10. Verify if pod is running
     ```bash
     kubectl get pods
     ```
-10. Validate service
+11. Validate service
     - This is an internal service with no ingress.
     - If the service has any trouble connecting with the database, run this command to reset the ConfigMap.
     ```bash
