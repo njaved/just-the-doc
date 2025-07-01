@@ -48,18 +48,18 @@ nav_enabled: true
 6. Configurations for the following should be on hand to update the values.yaml file- NBS_ODSE hostname, username, password and kafka bootstrap server names.
    ```yaml
    properties:
-    bootstrap_server: "EXAMPLE_MSK_KAFKA_ENDPOINT"
+      bootstrap_server: "EXAMPLE_MSK_KAFKA_ENDPOINT"
    sqlserverconnector: 
-    "config": 
-      "database.hostname": "nbs-db.private-EXAMPLE_DOMAIN",
-      "database.port": "1433",
-      "database.user": "EXAMPLE_DB_USER",
-      "database.password": "EXAMPLE_DB_USER_PASSWORD",
-      "database.dbname": "nbs_odse",
-      "database.names": "nbs_odse",
-      "database.server.name": "odse",
-      "database.history.kafka.bootstrap.servers": "EXAMPLE_MSK_KAFKA_ENDPOINT",
-      "schema.history.internal.kafka.bootstrap.servers": "EXAMPLE_MSK_KAFKA_ENDPOINT"   
+      "config": 
+         "database.hostname": "nbs-db.private-EXAMPLE_DOMAIN",
+         "database.port": "1433",
+         "database.user": "EXAMPLE_DB_USER",
+         "database.password": "EXAMPLE_DB_USER_PASSWORD",
+         "database.dbname": "nbs_odse",
+         "database.names": "nbs_odse",
+         "database.server.name": "odse",
+         "database.history.kafka.bootstrap.servers": "EXAMPLE_MSK_KAFKA_ENDPOINT",
+         "schema.history.internal.kafka.bootstrap.servers": "EXAMPLE_MSK_KAFKA_ENDPOINT"   
    env:
       - name: BOOTSTRAP_SERVERS
         value: "EXAMPLE_MSK_KAFKA_ENDPOINT"
