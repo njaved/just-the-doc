@@ -17,7 +17,7 @@ nav_enabled: true
 1. Validate the image tag
    ```yaml
    image:
-     repository: "quay.io/us-cdcgov/cdc-nbs-modernization/xml-hl7-parser-service"
+     repository: "quay.io/us-cdcgov/cdc-nbs-modernization/nnd-case-notification-service/xml-hl7-parser-service"
      pullPolicy: IfNotPresent
      tag: <release-version-tag> e.g v1.0.1
    ```
