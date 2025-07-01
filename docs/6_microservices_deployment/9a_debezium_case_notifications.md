@@ -47,7 +47,7 @@ nav_enabled: true
    ```
 6. Configurations for the following should be on hand to update the values.yaml file- NBS_ODSE hostname, username, password and kafka bootstrap server names.
    
-8. Sample ArgoCd manifest:
+7. Sample ArgoCd manifest:
    ```yaml
    apiVersion: argoproj.io/v1alpha1
    kind: Application
@@ -88,15 +88,15 @@ nav_enabled: true
       prune: true
       selfHeal: true
    ```
-9. Install pod
+8. Install pod
    ```bash
    helm install -f ./debezium-case-notifications/values.yaml debezium-case-notification-service-connect ./debezium-case-notifications/
    ```
-10. Verify if pod is running
+9. Verify if pod is running
     ```bash
     kubectl get pods
     ```
-11. Validate service
+10. Validate service
     - This is an internal service with no ingress.
     - If the service has any trouble connecting with the database, run this command to reset the ConfigMap.
     ```bash
