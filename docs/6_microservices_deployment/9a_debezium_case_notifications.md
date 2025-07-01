@@ -64,56 +64,15 @@ nav_enabled: true
          name: BOOTSTRAP_SERVERS
          value: "EXAMPLE_MSK_KAFKA_ENDPOINT"
    ```
-7. Sample ArgoCd manifest:
-   ```yaml
-   apiVersion: argoproj.io/v1alpha1
-   kind: Application
-   metadata:
-      name: debezium-case-notification-service
-   spec:
-      destination:
-        name: ''
-        namespace: default
-        server: 'https://kubernetes.default.svc'
-      source:
-        repoURL: 'https://github.com/CDCgov/NEDSS-Helm.git'
-        path: charts/debezium-case-notifications
-        targetRevision: main
-        helm:
-          valueFiles:
-            - values-dts1.yaml
-          parameters:
-            - name: image.repository
-              value: quay.io/debezium/connect
-            - name: image.tag
-              value: '2.7'
-            - name: connect.sqlserverconnector_case_notification.config.database\.user
-              value: <USER>
-            - name: connect.sqlserverconnector_case_notification.config.database\.password
-              value: <PASSWORD>
-            - name: 'connect.env[0].value'
-              value: >-
-                <KAFKA_BROKER_URL>
-            - name: connect.properties.bootstrap_server
-              value: >-
-                <KAFKA_BROKER_URL>
-   destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: default
-   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-   ```
-8. Install pod
+7. Install pod
    ```bash
    helm install -f ./debezium-case-notifications/values.yaml debezium-case-notification-service-connect ./debezium-case-notifications/
    ```
-9. Verify if pod is running
+8. Verify if pod is running
     ```bash
     kubectl get pods
     ```
-10. Validate service
+9. Validate service
     - This is an internal service with no ingress.
     - If the service has any trouble connecting with the database, run this command to reset the ConfigMap.
     ```bash
