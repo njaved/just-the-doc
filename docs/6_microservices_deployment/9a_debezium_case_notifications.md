@@ -61,7 +61,7 @@ nav_enabled: true
          "database.history.kafka.bootstrap.servers": "EXAMPLE_MSK_KAFKA_ENDPOINT",
          "schema.history.internal.kafka.bootstrap.servers": "EXAMPLE_MSK_KAFKA_ENDPOINT"
    Env:
-      - name: BOOTSTRAP_SERVERS
+         name: BOOTSTRAP_SERVERS
          value: "EXAMPLE_MSK_KAFKA_ENDPOINT"
    ```
 8. Sample ArgoCd manifest:
