@@ -104,3 +104,6 @@ nav_enabled: true
       - i. [NEDSS-Helm/charts/debezium/values.yaml at main · CDCgov/NEDSS-Helm](https://github.com/CDCgov/NEDSS-Helm/blob/main/charts/debezium/values.yaml)
 
  
+#### Additional Case Notification Technical Documentations
+
+[Technical Document ](https://cdc-nbs.atlassian.net/wiki/spaces/~636279befe5ff375235bc637/pages/1599045634/Technical+Document)
