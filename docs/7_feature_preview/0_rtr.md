@@ -139,6 +139,16 @@ If there are problems encountered during Database Setup, please reach out to our
    EXEC sp_changedbowner 'sa';
    ```
 
-
+---
+Real Time Reporting services should be deployed in the following order: 
+- liquibase
+- debezium-connect
+- cp-kafka-connect-server
+- observation-reporting-service
+- person-reporting-service
+- organization-reporting-service
+- investigation-reporting-service
+- ldfdata-reporting-service
+- post-processing-reporting-service. 
 
             
