@@ -20,7 +20,7 @@ nav_enabled: true
 4. Ensure the image repository and tags are populated with the following:
   ```yaml
   image:
-    repository: "quay.io/us-cdcgov/cdc-nbs-modernization/nifi"
+    repository: quay.io/us-cdcgov/cdc-nbs-modernization/nifi
     tag: <release-version-tag> e.g v1.0.1
   ```
 5. Update the efsFileSystemId with the [efs-id](https://us-east-1.console.aws.amazon.com/efs/home?region=us-east-1#/file-systems).
