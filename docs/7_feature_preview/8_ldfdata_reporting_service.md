@@ -21,7 +21,7 @@ nav_enabled: true
      repository: "quay.io/us-cdcgov/cdc-nbs-modernization/data-reporting-service/ldfdata-reporting-service"
      tag: <release-version-tag> e.g v1.0.1
    ```
-4. Update jdbc, odse, rdb and kafka configurations. The rdb configuration should point to rdb_modern.
+4. Update jdbc, odse and kafka configurations
    ```yaml
    jdbc:
      username: "EXAMPLE_DB_USER"
