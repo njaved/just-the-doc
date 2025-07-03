@@ -50,7 +50,23 @@ If there are problems encountered during Database Setup, please reach out to our
    - NBS_SRTE Script location: [NEDSS-DataReporting/enable-cdc-for-srte-table](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/srte/000-srte-db-general.sql)
 8. Manual creation of scripts for Real Time Reporting: As an alternative to Liquibase, scripts required for Real Time Reporting can be executed manually. If Liquibase is the preferred methodology, please refer to steps in the Liquibase/liquibase section.
    - a. Script location: NEDSS-DataReporting/db-upgrade
-   - b. Provide permissions for Real Time Reporting microservice user logins after successful execution of all required script. Please run the following scripts to provide permissions. 
+   - b. Provide permissions for Real Time Reporting microservice user logins after successful execution of all required script. Please run the following scripts to provide permissions.
+     -   i. [Organization service user](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/master/routines/002-create_organization_service_user.sql)
+     -   ii. [Observation service user](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/master/routines/003-create_observation_service_user.sql)
+     -   iii. [Person service user](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/master/routines/004-create_person_service_user.sql)
+     -   iv. [Investigation service user](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/master/routines/005-create_investigation_service_user.sql)
+     -   v. [LDF service user](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/master/routines/006-create_ldf_service_user.sql)
+     -   vi. [Postprocessing service user](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/master/routines/007-create_post_processing_service_user.sql)
+     -   vii. [Kafka sync connector](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/master/routines/008-create_kafka_sync_connector_service_user.sql)
+     -   viii. [Debezium service user](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/master/routines/009-create_debezium_service_user.sql)
+
+**_Troubleshooting tip:_** After `rdb_modern` is restored, if the Change Data Capture is not producing data, run the following script:
+
+   ```sql
+   -- Change DB owner after backup/restore
+   USE NBS_ODSE;
+   EXEC sp_changedbowner 'sa';
+   ```
 
 
 
