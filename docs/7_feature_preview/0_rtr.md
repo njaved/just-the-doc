@@ -26,8 +26,25 @@ The database scripts referenced in the guide are maintained in the [DataReportin
 If there are problems encountered during Database Setup, please reach out to our support team (email: nbs@cdc.gov).
 
 1. SQL Server Compatibility Level: Functionality within Real Time Reporting requires SQL Server 2016 or higher to set Compatibility Level at 130. The level is set during the Liquibase Service deployment (Section: Liquibase). Compatibility Level can be reviewed by running the query below:
-2. Database Release Version: Verify the underlying database release version returned is 6.0.16 or higher. Execute the following query to verify the baseline NBS Release version:
-3. Create rdb_modern database: In accordance with the strangler fig strategy, a new database, rdb_modern, is introduced to ensure availability of classic ETL hydrated RDB and to host necessary components for Real Time Reporting. RDB_Modern database needs to be created from RDB database backup. If you have AWS RDS, optionally you follow the steps to create a backup of RDB and Restoring it as RDB_Modern using RDS and S3.
+   ```sql
+   --View Compatibility Level
+   USE NBS_ODSE;  
+   SELECT compatibility_level  
+   FROM sys.databases WHERE name = 'nbs_odse';
+   ```
+3. Database Release Version: Verify the underlying database release version returned is 6.0.16 or higher. Execute the following query to verify the baseline NBS Release version:
+   ```sql
+   --Verify NBS Release version
+   USE NBS_ODSE; 
+   SELECT max(Version) current_version
+   FROM NBS_ODSE.dbo.NBS_Release;
+   
+   or use the below query to check the config value
+   
+   use [NBS_ODSE];
+   select * from NBS_configuration where config_key = 'CODE_BASE'
+   ```
+5. Create rdb_modern database: In accordance with the strangler fig strategy, a new database, rdb_modern, is introduced to ensure availability of classic ETL hydrated RDB and to host necessary components for Real Time Reporting. RDB_Modern database needs to be created from RDB database backup. If you have AWS RDS, optionally you follow the steps to create a backup of RDB and Restoring it as RDB_Modern using RDS and S3.
    - i. Backup RDB
        - 1. Login into AWS Account.
        - 2. Navigate to RDS.
@@ -35,21 +52,73 @@ If there are problems encountered during Database Setup, please reach out to our
        - 4. Open any SQL Client and connect to SQL Server RDS instance.
        - 5. Backup database to AWS S3.
             - Run this procedure to back up the SQL Server database to S3.
+              ```sql
+              exec msdb.dbo.rds_backup_database
+              @source_db_name='RDB',
+              @s3_arn_to_backup_to='arn:aws:s3:::cdc-nbs-state-upload-shared/Classic-6.0.16/rdb_classic_2024_07_22_5pmet.bak',
+              @type='FULL'
+              ```
             - Run the procedure to check the status.
+              ```sql
+              exec msdb.dbo.rds_task_status;
+              ```
    - ii. Restore rdb_modern:
        - 1. Open any SQL Client and connect to SQL Server RDS instance.
        - 2. Restore RDB as rdb_modern by executing the following procedure.
+            ```sql
+            exec msdb.dbo.rds_restore_database  
+            @restore_db_name='rdb_modern',
+            @s3_arn_to_restore_from='arn:aws:s3:::cdc-nbs-state-upload-shared/Classic-6.0.16/rdb_classic_gdit_07_10_5pmet.bak',
+            @type='FULL';
+            ```
             - Run the procedure to check the status.
-4. Create admin user: Create a dedicated user account for Liquibase operations. The user provides Liquibase with the required permissions to maintain necessary database components for Real Time Reporting, and enable change data capture for tables. Please review the steps and update the PASSWORD field for before executing. This script enables change data capture on the database level and provides validation queries.
+              ```sql
+              exec msdb.dbo.rds_task_status;
+              ```
+6. Create admin user: Create a dedicated user account for Liquibase operations. The user provides Liquibase with the required permissions to maintain necessary database components for Real Time Reporting, and enable change data capture for tables. Please review the steps and update the PASSWORD field for before executing. This script enables change data capture on the database level and provides validation queries.
    - a. Script location: [NEDSS-DataReporting/create-rtr-admin-user](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/liquibase-service/src/main/resources/db/master/routines/000-create_rtr_admin_user-001.sql)
-5. Create Real Time Reporting microservice user logins: Create dedicated user accounts for each Real Time Reporting microservice. After the database objects are created, each user will be provided with permissions it needs to do its job and nothing more! Please review the steps and update the PASSWORD field for before executing.
+7. Create Real Time Reporting microservice user logins: Create dedicated user accounts for each Real Time Reporting microservice. After the database objects are created, each user will be provided with permissions it needs to do its job and nothing more! Please review the steps and update the PASSWORD field for before executing.
    - a. Script location: [NEDSS-DataReporting/service-user-login-script](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/master/routines/001-service_users_login_creation.sql)
-6. Manually Enable Change Data Capture on NBS_ODSE and NBS_SRTE databases: If Step 4 is executed, Step 5 can be skipped. The query below can be used to enable Change Data Capture on the RDS SQL Server databases. sysadmin permissions are required to run it. The subsequent query can be used to verify configuration.
-7. Enable Change Data Capture for tables in NBS_ODSE and NBS_SRTE: Insert, updates and deletes to database tables are tracked by Change Data Capture as events. These events are used to rapidly transform and deliver data to target tables in rdb_modern. To enable Change Data Capture, please execute the following scripts. Once completed, the validation query below can be run to validate the tables being tracked.
+8. Manually Enable Change Data Capture on NBS_ODSE and NBS_SRTE databases: If Step 4 is executed, Step 5 can be skipped. The query below can be used to enable Change Data Capture on the RDS SQL Server databases. sysadmin permissions are required to run it. The subsequent query can be used to verify configuration.
+   ```sql
+   -- Enable change data capture in ODSE
+   exec msdb.dbo.rds_cdc_enable_db 'NBS_ODSE';
+   -- Enable change data capure in SRTE
+   exec msdb.dbo.rds_cdc_enable_db 'NBS_SRTE';
+   
+   --Verify change data capture. is_cdc_enabled=1 indicates successful configuration. 
+   SELECT name,
+     is_cdc_enabled
+   FROM sys.databases;
+   ```
+10. Enable Change Data Capture for tables in NBS_ODSE and NBS_SRTE: Insert, updates and deletes to database tables are tracked by Change Data Capture as events. These events are used to rapidly transform and deliver data to target tables in rdb_modern. To enable Change Data Capture, please execute the following scripts. Once completed, the validation query below can be run to validate the tables being tracked.
    - NBS_ODSE script location: [NEDSS-DataReporting/enable-cdc-for-odse-table](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/odse/000-odse-db-general.sql)
    - NBS_SRTE Script location: [NEDSS-DataReporting/enable-cdc-for-srte-table](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/srte/000-srte-db-general.sql)
-8. Manual creation of scripts for Real Time Reporting: As an alternative to Liquibase, scripts required for Real Time Reporting can be executed manually. If Liquibase is the preferred methodology, please refer to steps in the Liquibase/liquibase section.
-   - a. Script location: NEDSS-DataReporting/db-upgrade
+   ```sql
+   --View ODSE tables with CDC enabled. 
+   USE NBS_ODSE;
+   SELECT
+     name,
+     case when is_tracked_by_cdc  = 1 then 'YES'
+       else 'NO' end as is_tracked_by_cdc
+     FROM sys.tables
+     WHERE is_tracked_by_cdc = 1;
+   
+   -- View SRTE tables with CDC enabled
+   USE NBS_SRTE;
+   SELECT
+     name,
+     case when is_tracked_by_cdc  = 1 then 'YES'
+       else 'NO' end as is_tracked_by_cdc
+     FROM sys.tables
+     WHERE is_tracked_by_cdc = 1;
+   ```
+   ![cdc-enabled-odse-tables](/just-the-doc/docs/7_feature_preview/images/cdc_enabled_odse_tables.png)
+
+   ![cdc-enabled-srte-tables](/just-the-doc/docs/7_feature_preview/images/cdc_enabled_srte_tables.png)
+
+11. Manual creation of scripts for Real Time Reporting: As an alternative to Liquibase, scripts required for Real Time Reporting can be executed manually. If Liquibase is the preferred methodology, please refer to steps in the Liquibase/liquibase section.
+   - a. Script location: [NEDSS-DataReporting/db-upgrade](https://github.com/CDCgov/NEDSS-DataReporting/tree/main/db/upgrade/rdb_modern#database-upgrade-script)
    - b. Provide permissions for Real Time Reporting microservice user logins after successful execution of all required script. Please run the following scripts to provide permissions.
      -   i. [Organization service user](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/master/routines/002-create_organization_service_user.sql)
      -   ii. [Observation service user](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/master/routines/003-create_observation_service_user.sql)
