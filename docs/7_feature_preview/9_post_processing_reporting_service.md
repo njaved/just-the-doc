@@ -34,7 +34,7 @@ nav_enabled: true
      dburl: "jdbc:sqlserver://<EXAMPLE_DB_ENDPOINT>:<PORT>;databaseName=rdb_modern;encrypt=true;trustServerCertificate=true;"
     
    kafka:
-     cluster: "EXAMPLE_KAFKA_CLUSTER
+     cluster: "EXAMPLE_KAFKA_CLUSTER"
     
    featureFlag:
      covidDmEnable: '''false'''
