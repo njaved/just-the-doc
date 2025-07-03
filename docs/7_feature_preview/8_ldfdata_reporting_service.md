@@ -13,7 +13,7 @@ nav_enabled: true
 {:toc}
 
 ## LDFData-reporting-service
-1. The helm chart for post-processing service should be available under charts/ldfdata-reporting-service.
+1. The helm chart for LDF service should be available under charts/ldfdata-reporting-service.
 2. In the values.yaml, replace all occurrences of app.EXAMPLE_DOMAIN with the URL of your modern app as shown in Table-3.
 3. Validate image repository and tag:
    ```yaml
@@ -44,5 +44,5 @@ nav_enabled: true
 7. Validate service (on browser)
    ```
    https://data.<exampledomain>/reporting/ldfdata-svc/status
-   Expected: PostProcessing Reporting Service Status OK
+   Expected: LdfData Preprocessing Service Status OK
    ```
