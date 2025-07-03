@@ -94,25 +94,25 @@ If there are problems encountered during Database Setup, please reach out to our
 7. Enable Change Data Capture for tables in NBS_ODSE and NBS_SRTE: Insert, updates and deletes to database tables are tracked by Change Data Capture as events. These events are used to rapidly transform and deliver data to target tables in rdb_modern. To enable Change Data Capture, please execute the following scripts. Once completed, the validation query below can be run to validate the tables being tracked.
 - NBS_ODSE script location: [NEDSS-DataReporting/enable-cdc-for-odse-table](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/odse/000-odse-db-general.sql)
 - NBS_SRTE Script location: [NEDSS-DataReporting/enable-cdc-for-srte-table](https://github.com/CDCgov/NEDSS-DataReporting/blob/main/db/upgrade/srte/000-srte-db-general.sql)
-```sql
---View ODSE tables with CDC enabled. 
-USE NBS_ODSE;
-SELECT
-  name,
-  case when is_tracked_by_cdc  = 1 then 'YES'
-    else 'NO' end as is_tracked_by_cdc
-  FROM sys.tables
-  WHERE is_tracked_by_cdc = 1;
-
--- View SRTE tables with CDC enabled
-USE NBS_SRTE;
-SELECT
-  name,
-  case when is_tracked_by_cdc  = 1 then 'YES'
-    else 'NO' end as is_tracked_by_cdc
-  FROM sys.tables
-  WHERE is_tracked_by_cdc = 1;
-```
+   ```sql
+   --View ODSE tables with CDC enabled. 
+   USE NBS_ODSE;
+   SELECT
+     name,
+     case when is_tracked_by_cdc  = 1 then 'YES'
+       else 'NO' end as is_tracked_by_cdc
+     FROM sys.tables
+     WHERE is_tracked_by_cdc = 1;
+   
+   -- View SRTE tables with CDC enabled
+   USE NBS_SRTE;
+   SELECT
+     name,
+     case when is_tracked_by_cdc  = 1 then 'YES'
+       else 'NO' end as is_tracked_by_cdc
+     FROM sys.tables
+     WHERE is_tracked_by_cdc = 1;
+   ```
    ![cdc-enabled-odse-tables](/just-the-doc/docs/7_feature_preview/images/cdc_enabled_odse_tables.png)
 
    ![cdc-enabled-srte-tables](/just-the-doc/docs/7_feature_preview/images/cdc_enabled_srte_tables.png)
