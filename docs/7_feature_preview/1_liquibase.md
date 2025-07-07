@@ -1,7 +1,7 @@
 ---
 title: Liquibase
 layout: page
-parent: Real Time Reporting (Feature Preview)
+parent: Real Time Reporting (Preview)
 nav_order: 1
 nav_enabled: true
 ---
