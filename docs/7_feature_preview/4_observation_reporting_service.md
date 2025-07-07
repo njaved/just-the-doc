@@ -1,7 +1,7 @@
 ---
 title: Observation Reporting
 layout: page
-parent: Real Time Reporting (Feature Preview)
+parent: Real Time Reporting (Preview)
 nav_order: 4
 nav_enabled: true
 ---
