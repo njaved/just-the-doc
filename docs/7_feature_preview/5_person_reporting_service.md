@@ -1,7 +1,7 @@
 ---
 title: Person Reporting
 layout: page
-parent: Real Time Reporting (Feature Preview)
+parent: Real Time Reporting (Preview)
 nav_order: 5
 nav_enabled: true
 ---
