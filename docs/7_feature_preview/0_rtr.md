@@ -1,5 +1,5 @@
 ---
-title: Real Time Reporting (Feature Preview)
+title: Real Time Reporting (Preview)
 layout: page
 nav_order: 8
 nav_enabled: true
