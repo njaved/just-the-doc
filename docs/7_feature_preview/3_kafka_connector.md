@@ -1,7 +1,7 @@
 ---
 title: Kafka connector
 layout: page
-parent: Real Time Reporting (Feature Preview)
+parent: Real Time Reporting (Preview)
 nav_order: 3
 nav_enabled: true
 ---
