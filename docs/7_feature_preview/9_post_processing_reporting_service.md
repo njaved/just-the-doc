@@ -1,7 +1,7 @@
 ---
 title: Post Processing Reporting
 layout: page
-parent: Real Time Reporting (Feature Preview)
+parent: Real Time Reporting (Preview)
 nav_order: 9
 nav_enabled: true
 ---
