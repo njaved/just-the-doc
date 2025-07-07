@@ -1,7 +1,7 @@
 ---
 title: Debezium
 layout: page
-parent: Real Time Reporting (Feature Preview)
+parent: Real Time Reporting (Preview)
 nav_order: 2
 nav_enabled: true
 ---
