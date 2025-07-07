@@ -1,7 +1,7 @@
 ---
 title: LDF Data Reporting
 layout: page
-parent: Real Time Reporting (Feature Preview)
+parent: Real Time Reporting (Preview)
 nav_order: 8
 nav_enabled: true
 ---
